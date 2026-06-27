@@ -1,0 +1,108 @@
+{
+  "categorias" : [ {
+    "idCategoria" : 1,
+    "nombreCategoria" : "Psicología",
+    "descripcion" : "Salud mental y bienestar"
+  }, {
+    "idCategoria" : 2,
+    "nombreCategoria" : "Finanzas",
+    "descripcion" : "Educación financiera"
+  }, {
+    "idCategoria" : 3,
+    "nombreCategoria" : "Defensa personal",
+    "descripcion" : "Técnicas de autodefensa"
+  } ],
+  "cursos" : [ {
+    "idCurso" : 1,
+    "titulo" : "Violencia de género",
+    "descripcion" : "Lorem ipsum dolor sit amet consectetur, adipiscing elit mollis.",
+    "url" : "violencia-de-genero",
+    "color" : "#f9a8d4",
+    "portada" : "",
+    "estado" : true,
+    "fechaCreacion" : "2026-01-10",
+    "idInstructor" : null,
+    "idsCategorias" : [ 1 ],
+    "modulos" : [ {
+      "idModulo" : 3,
+      "titulo" : "Introduccion",
+      "duracion" : "",
+      "lecciones" : [ ]
+    }, {
+      "idModulo" : 4,
+      "titulo" : "Sintomas",
+      "duracion" : "",
+      "lecciones" : [ ]
+    } ]
+  }, {
+    "idCurso" : 2,
+    "titulo" : "Finanzas básicas",
+    "descripcion" : "Lorem ipsum dolor sit amet consectetur, adipiscing elit mollis.",
+    "url" : "finanzas-basicas",
+    "color" : "#93c5fd",
+    "portada" : "",
+    "estado" : true,
+    "fechaCreacion" : "2026-02-14",
+    "idInstructor" : null,
+    "idsCategorias" : [ 2 ],
+    "modulos" : [ ]
+  }, {
+    "idCurso" : 3,
+    "titulo" : "Defensa personal",
+    "descripcion" : "Lorem ipsum dolor sit amet consectetur, adipiscing elit mollis.",
+    "url" : "defensa-personal",
+    "color" : "#fbbf24",
+    "portada" : "",
+    "estado" : true,
+    "fechaCreacion" : "2026-03-01",
+    "idInstructor" : null,
+    "idsCategorias" : [ 3 ],
+    "modulos" : [ {
+      "idModulo" : 1,
+      "titulo" : "Título del módulo",
+      "duracion" : "5 hrs",
+      "lecciones" : [ {
+        "idLeccion" : 1,
+        "titulo" : "Título de la lección",
+        "descripcion" : "",
+        "bloques" : [ ]
+      }, {
+        "idLeccion" : 2,
+        "titulo" : "Título de la lección",
+        "descripcion" : "",
+        "bloques" : [ ]
+      }, {
+        "idLeccion" : 3,
+        "titulo" : "Título de la lección",
+        "descripcion" : "",
+        "bloques" : [ ]
+      } ]
+    }, {
+      "idModulo" : 2,
+      "titulo" : "Título del módulo",
+      "duracion" : "5 hrs",
+      "lecciones" : [ {
+        "idLeccion" : 4,
+        "titulo" : "Título del cuestionario",
+        "descripcion" : "",
+        "bloques" : [ ]
+      } ]
+    } ]
+  }, {
+    "idCurso" : 4,
+    "titulo" : "Violencia de genero",
+    "descripcion" : "Curso sobre la violencia de genero",
+    "url" : "https://ejemplobesafe/cursos/",
+    "color" : "#fbbf24",
+    "portada" : "",
+    "estado" : true,
+    "fechaCreacion" : "2026-06-17",
+    "idInstructor" : null,
+    "idsCategorias" : [ 1 ],
+    "modulos" : null
+  } ],
+  "nextCursoId" : 5,
+  "nextCategoriaId" : 4,
+  "nextModuloId" : 5,
+  "nextLeccionId" : 5
+}
