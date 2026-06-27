@@ -49,7 +49,7 @@ export default function RegisterStep1({ navigation }: Props) {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.background },
-  container: { paddingHorizontal: 24, paddingTop: 16, paddingBottom: 40 },
+  container: { paddingHorizontal: 24, paddingTop: 26, paddingBottom: 40 },
   header: { flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 28 },
   backBtn: { padding: 4 },
   backArrow: { fontSize: 22, color: colors.textPrimary },
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   halfField: { flex: 1 },
   fieldLabel: { fontSize: 14, fontWeight: '500', color: colors.textPrimary, marginBottom: 10 },
   optional: { color: colors.textMuted, fontWeight: '400' },
-  pillsContainer: { flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginBottom: 32 },
+  pillsContainer: { flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginBottom: 40 },
   pill: { paddingHorizontal: 20, paddingVertical: 10, borderRadius: 50, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.white },
   pillActive: { backgroundColor: colors.teal, borderColor: colors.teal },
   pillText: { fontSize: 14, color: colors.textPrimary, fontWeight: '500' },

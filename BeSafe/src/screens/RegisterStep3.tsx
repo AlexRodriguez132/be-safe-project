@@ -58,7 +58,7 @@ export default function RegisterStep3({ navigation }: Props) {
         </TouchableOpacity>
         <View style={styles.buttonRow}>
           <SecondaryButton title="Atrás" onPress={() => navigation.goBack()} style={styles.backButton} />
-          <PrimaryButton title="Crear cuenta" onPress={() => {}} style={styles.nextButton} />
+          <PrimaryButton title="Crear cuenta" onPress={() => navigation.navigate('Onboarding')}  style={styles.nextButton} />
         </View>
       </ScrollView>
     </SafeAreaView>
