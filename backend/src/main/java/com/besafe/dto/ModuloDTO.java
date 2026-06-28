@@ -9,4 +9,5 @@ public class ModuloDTO {
     private String titulo;
     private String duracion;
     private List<LeccionDTO> lecciones;
+    private List<CuestionarioDTO> cuestionarios;
 }

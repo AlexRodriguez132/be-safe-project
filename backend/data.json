@@ -27,12 +27,14 @@
       "idModulo" : 3,
       "titulo" : "Introduccion",
       "duracion" : "",
-      "lecciones" : [ ]
+      "lecciones" : [ ],
+      "cuestionarios" : [ ]
     }, {
       "idModulo" : 4,
       "titulo" : "Sintomas",
       "duracion" : "",
-      "lecciones" : [ ]
+      "lecciones" : [ ],
+      "cuestionarios" : [ ]
     } ]
   }, {
     "idCurso" : 2,
@@ -76,7 +78,8 @@
         "titulo" : "Título de la lección",
         "descripcion" : "",
         "bloques" : [ ]
-      } ]
+      } ],
+      "cuestionarios" : [ ]
     }, {
       "idModulo" : 2,
       "titulo" : "Título del módulo",
@@ -86,7 +89,8 @@
         "titulo" : "Título del cuestionario",
         "descripcion" : "",
         "bloques" : [ ]
-      } ]
+      } ],
+      "cuestionarios" : [ ]
     } ]
   }, {
     "idCurso" : 4,
@@ -100,9 +104,59 @@
     "idInstructor" : null,
     "idsCategorias" : [ 1 ],
     "modulos" : null
+  }, {
+    "idCurso" : 5,
+    "titulo" : "Identificar la violencia",
+    "descripcion" : "Sobre identificar la violencia",
+    "url" : "https://ejemplobesafe/cursos/",
+    "color" : "#93c5fd",
+    "portada" : "",
+    "estado" : true,
+    "fechaCreacion" : "2026-06-27",
+    "idInstructor" : null,
+    "idsCategorias" : [ 3 ],
+    "modulos" : null
+  }, {
+    "idCurso" : 6,
+    "titulo" : "Curso 1",
+    "descripcion" : "Curso de prueba 1",
+    "url" : "https://ejemplobesafe/cursos/",
+    "color" : "#f9a8d4",
+    "portada" : "",
+    "estado" : true,
+    "fechaCreacion" : "2026-06-27",
+    "idInstructor" : null,
+    "idsCategorias" : [ 2 ],
+    "modulos" : [ {
+      "idModulo" : 5,
+      "titulo" : "Modulo 1",
+      "duracion" : "5 horas",
+      "lecciones" : [ {
+        "idLeccion" : 5,
+        "titulo" : "Leccion de prueba",
+        "descripcion" : "Esta es una leccion de prueba donde veremos como se ve con lecciones",
+        "bloques" : [ ]
+      } ],
+      "cuestionarios" : [ {
+        "idCuestionario" : 6,
+        "titulo" : "Pregunta alusiva de prueba",
+        "preguntas" : [ {
+          "idPregunta" : 602,
+          "titulo" : "2+2",
+          "tipo" : "MAS_OPCIONES",
+          "opciones" : [ {
+            "idOpcion" : 600,
+            "texto" : "1"
+          }, {
+            "idOpcion" : 601,
+            "texto" : "2"
+          } ]
+        } ]
+      } ]
+    } ]
   } ],
-  "nextCursoId" : 5,
+  "nextCursoId" : 7,
   "nextCategoriaId" : 4,
-  "nextModuloId" : 5,
-  "nextLeccionId" : 5
+  "nextModuloId" : 6,
+  "nextLeccionId" : 7
 }

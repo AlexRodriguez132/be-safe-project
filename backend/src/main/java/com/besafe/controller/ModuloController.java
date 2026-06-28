@@ -58,4 +58,27 @@ public class ModuloController {
         moduloService.eliminarLeccion(idCurso, idModulo, idLeccion);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/{idModulo}/cuestionarios")
+    public ResponseEntity<CuestionarioDTO> crearCuestionario(@PathVariable Long idCurso,
+                                                              @PathVariable Long idModulo,
+                                                              @RequestBody CuestionarioDTO dto) throws IOException {
+        return ResponseEntity.status(HttpStatus.CREATED).body(moduloService.crearCuestionario(idCurso, idModulo, dto));
+    }
+
+    @PutMapping("/{idModulo}/cuestionarios/{idCuestionario}")
+    public ResponseEntity<CuestionarioDTO> actualizarCuestionario(@PathVariable Long idCurso,
+                                                                   @PathVariable Long idModulo,
+                                                                   @PathVariable Long idCuestionario,
+                                                                   @RequestBody CuestionarioDTO dto) throws IOException {
+        return ResponseEntity.ok(moduloService.actualizarCuestionario(idCurso, idModulo, idCuestionario, dto));
+    }
+
+    @DeleteMapping("/{idModulo}/cuestionarios/{idCuestionario}")
+    public ResponseEntity<Void> eliminarCuestionario(@PathVariable Long idCurso,
+                                                      @PathVariable Long idModulo,
+                                                      @PathVariable Long idCuestionario) throws IOException {
+        moduloService.eliminarCuestionario(idCurso, idModulo, idCuestionario);
+        return ResponseEntity.noContent().build();
+    }
 }

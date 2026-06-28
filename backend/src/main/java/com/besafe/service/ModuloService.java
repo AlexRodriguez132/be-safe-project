@@ -26,6 +26,7 @@ public class ModuloService {
                 .lecciones(new ArrayList<>())
                 .build();
         store.getData().setNextModuloId(store.getData().getNextModuloId() + 1);
+        if (curso.getModulos() == null) curso.setModulos(new ArrayList<>());
         curso.getModulos().add(modulo);
         store.save();
         return toDTO(modulo);
@@ -92,6 +93,86 @@ public class ModuloService {
         store.save();
     }
 
+    // --- Cuestionarios ---
+
+    public CuestionarioDTO crearCuestionario(Long idCurso, Long idModulo, CuestionarioDTO dto) throws IOException {
+        ModuloModel modulo = getModulo(idCurso, idModulo);
+        if (modulo.getCuestionarios() == null) modulo.setCuestionarios(new ArrayList<>());
+
+        long nextId = store.getData().getNextLeccionId();
+        store.getData().setNextLeccionId(nextId + 1);
+
+        List<PreguntaModel> preguntas = buildPreguntas(dto.getPreguntas(), new long[]{nextId * 100});
+
+        CuestionarioModel cuestionario = CuestionarioModel.builder()
+                .idCuestionario(nextId)
+                .titulo(dto.getTitulo())
+                .preguntas(preguntas)
+                .build();
+
+        modulo.getCuestionarios().add(cuestionario);
+        store.save();
+        return toCuestionarioDTO(cuestionario);
+    }
+
+    public CuestionarioDTO actualizarCuestionario(Long idCurso, Long idModulo, Long idCuestionario, CuestionarioDTO dto) throws IOException {
+        ModuloModel modulo = getModulo(idCurso, idModulo);
+        List<CuestionarioModel> lista = modulo.getCuestionarios();
+        for (CuestionarioModel c : lista) {
+            if (c.getIdCuestionario().equals(idCuestionario)) {
+                c.setTitulo(dto.getTitulo());
+                c.setPreguntas(buildPreguntas(dto.getPreguntas(), new long[]{idCuestionario * 100}));
+                store.save();
+                return toCuestionarioDTO(c);
+            }
+        }
+        throw new RuntimeException("Cuestionario no encontrado: " + idCuestionario);
+    }
+
+    public void eliminarCuestionario(Long idCurso, Long idModulo, Long idCuestionario) throws IOException {
+        getModulo(idCurso, idModulo).getCuestionarios()
+                .removeIf(c -> c.getIdCuestionario().equals(idCuestionario));
+        store.save();
+    }
+
+    private List<PreguntaModel> buildPreguntas(List<PreguntaDTO> dtos, long[] seed) {
+        if (dtos == null) return new ArrayList<>();
+        return dtos.stream().map(p -> {
+            List<OpcionModel> opciones = p.getOpciones() == null ? new ArrayList<>() :
+                    p.getOpciones().stream().map(o -> OpcionModel.builder()
+                            .idOpcion(o.getIdOpcion() != null ? o.getIdOpcion() : seed[0]++)
+                            .texto(o.getTexto())
+                            .esCorrecta(o.isEsCorrecta())
+                            .build()).collect(Collectors.toList());
+            return PreguntaModel.builder()
+                    .idPregunta(p.getIdPregunta() != null ? p.getIdPregunta() : seed[0]++)
+                    .titulo(p.getTitulo())
+                    .tipo(p.getTipo())
+                    .opciones(opciones)
+                    .build();
+        }).collect(Collectors.toList());
+    }
+
+    private CuestionarioDTO toCuestionarioDTO(CuestionarioModel c) {
+        List<PreguntaDTO> preguntas = c.getPreguntas() == null ? new ArrayList<>() :
+                c.getPreguntas().stream().map(p -> PreguntaDTO.builder()
+                        .idPregunta(p.getIdPregunta())
+                        .titulo(p.getTitulo())
+                        .tipo(p.getTipo())
+                        .opciones(p.getOpciones() == null ? new ArrayList<>() :
+                                p.getOpciones().stream().map(o -> OpcionDTO.builder()
+                                        .idOpcion(o.getIdOpcion())
+                                        .texto(o.getTexto())
+                                        .esCorrecta(o.isEsCorrecta())
+                                        .build()).collect(Collectors.toList()))
+                        .build()).collect(Collectors.toList());
+        return CuestionarioDTO.builder()
+                .idCuestionario(c.getIdCuestionario())
+                .titulo(c.getTitulo())
+                .preguntas(preguntas)
+                .build();
+    }
+
     private CursoModel getCurso(Long idCurso) {
         return store.getData().getCursos().stream()
                 .filter(c -> c.getIdCurso().equals(idCurso))
@@ -113,6 +194,8 @@ public class ModuloService {
                 .duracion(m.getDuracion())
                 .lecciones(m.getLecciones() == null ? new ArrayList<>() :
                         m.getLecciones().stream().map(this::toLeccionDTO).collect(Collectors.toList()))
+                .cuestionarios(m.getCuestionarios() == null ? new ArrayList<>() :
+                        m.getCuestionarios().stream().map(this::toCuestionarioDTO).collect(Collectors.toList()))
                 .build();
     }
 
