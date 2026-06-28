@@ -269,6 +269,23 @@
 
 .btn-crear svg { width: 16px; height: 16px; stroke: #fff; }
 
+.btn-vista-previa {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f3f4f6;
+  color: #374151;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 9px 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-vista-previa:hover { background: #e5e7eb; }
+.btn-vista-previa svg { width: 15px; height: 15px; }
+
 .modulos-list { display: flex; flex-direction: column; gap: 2px; }
 
 .modulo-item {

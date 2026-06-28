@@ -6,6 +6,8 @@ import NuevoCursoPage from './pages/admin/NuevoCursoPage';
 import DetalleCursoPage from './pages/admin/DetalleCursoPage';
 import NuevoModuloPage from './pages/admin/NuevoModuloPage';
 import NuevaLeccionPage from './pages/admin/NuevaLeccionPage';
+import NuevoCuestionarioPage from './pages/admin/NuevoCuestionarioPage';
+import VistaPreviaCursoPage from './pages/admin/VistaPreviaCursoPage';
 import HomePage from './pages/user/HomePage';
 import './styles/global.css';
 
@@ -36,6 +38,9 @@ export default function App() {
           <Route path="cursos/:id/modulos/:idModulo/editar" element={<NuevoModuloPage />} />
           <Route path="cursos/:id/modulos/:idModulo/lecciones/nuevo" element={<NuevaLeccionPage />} />
           <Route path="cursos/:id/modulos/:idModulo/lecciones/:idLeccion/editar" element={<NuevaLeccionPage />} />
+          <Route path="cursos/:id/modulos/:idModulo/cuestionarios/nuevo" element={<NuevoCuestionarioPage />} />
+          <Route path="cursos/:id/modulos/:idModulo/cuestionarios/:idCuestionario/editar" element={<NuevoCuestionarioPage />} />
+          <Route path="cursos/:id/vista-previa" element={<VistaPreviaCursoPage />} />
           {/* Rutas pendientes — otros módulos */}
           <Route path="dashboard" element={<PlaceholderPage title="Dashboard" />} />
           <Route path="usuarios" element={<PlaceholderPage title="Usuarios" />} />

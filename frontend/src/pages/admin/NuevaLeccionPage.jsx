@@ -115,6 +115,7 @@ export default function NuevaLeccionPage() {
           </div>
 
           <div className="form-group">
+            <label>Descripción</label>
             <textarea value={descripcion} onChange={e => setDescripcion(e.target.value)}
               placeholder="Escribe una breve descripción" rows={4} />
           </div>

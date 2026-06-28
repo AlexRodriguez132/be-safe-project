@@ -157,10 +157,16 @@ export default function DetalleCursoPage() {
             <h2>Módulos del curso</h2>
             <p>Organiza el contenido de tu curso en módulos</p>
           </div>
-          <button className="btn-crear" onClick={() => navigate(`/admin/cursos/${id}/modulos/nuevo`)}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-            Crear módulo
-          </button>
+          <div style={{ display: 'flex', gap: 8 }}>
+            <button className="btn-vista-previa" onClick={() => navigate(`/admin/cursos/${id}/vista-previa`)}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              Vista previa
+            </button>
+            <button className="btn-crear" onClick={() => navigate(`/admin/cursos/${id}/modulos/nuevo`)}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+              Crear módulo
+            </button>
+          </div>
         </div>
 
         <div className="modulos-list">
