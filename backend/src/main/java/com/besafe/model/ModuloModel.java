@@ -10,4 +10,5 @@ public class ModuloModel {
     private String titulo;
     private String duracion;
     private List<LeccionModel> lecciones = new ArrayList<>();
+    private List<CuestionarioModel> cuestionarios = new ArrayList<>();
 }

@@ -6,6 +6,8 @@ import NuevoCursoPage from './pages/admin/NuevoCursoPage';
 import DetalleCursoPage from './pages/admin/DetalleCursoPage';
 import NuevoModuloPage from './pages/admin/NuevoModuloPage';
 import NuevaLeccionPage from './pages/admin/NuevaLeccionPage';
+import NuevoCuestionarioPage from './pages/admin/NuevoCuestionarioPage';
+import VistaPreviaCursoPage from './pages/admin/VistaPreviaCursoPage';
 import HomePage from './pages/user/HomePage';
 import './styles/global.css';
 
@@ -13,7 +15,6 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Vista usuario */}
         <Route element={<UserLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/mis-cursos" element={<PlaceholderPage title="Mis cursos" />} />
@@ -25,18 +26,19 @@ export default function App() {
           <Route path="/configuracion" element={<PlaceholderPage title="Configuración" />} />
         </Route>
 
-        {/* Vista admin */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Navigate to="/admin/cursos" replace />} />
           <Route path="cursos" element={<AdminCursosPage />} />
           <Route path="cursos/nuevo" element={<NuevoCursoPage />} />
           <Route path="cursos/editar/:id" element={<NuevoCursoPage />} />
           <Route path="cursos/:id/detalle" element={<DetalleCursoPage />} />
+          <Route path="cursos/:id/vista-previa" element={<VistaPreviaCursoPage />} />
           <Route path="cursos/:id/modulos/nuevo" element={<NuevoModuloPage />} />
           <Route path="cursos/:id/modulos/:idModulo/editar" element={<NuevoModuloPage />} />
           <Route path="cursos/:id/modulos/:idModulo/lecciones/nuevo" element={<NuevaLeccionPage />} />
           <Route path="cursos/:id/modulos/:idModulo/lecciones/:idLeccion/editar" element={<NuevaLeccionPage />} />
-          {/* Rutas pendientes — otros módulos */}
+          <Route path="cursos/:id/modulos/:idModulo/cuestionarios/nuevo" element={<NuevoCuestionarioPage />} />
+          <Route path="cursos/:id/modulos/:idModulo/cuestionarios/:idCuestionario/editar" element={<NuevoCuestionarioPage />} />
           <Route path="dashboard" element={<PlaceholderPage title="Dashboard" />} />
           <Route path="usuarios" element={<PlaceholderPage title="Usuarios" />} />
           <Route path="pagos" element={<PlaceholderPage title="Pagos" />} />

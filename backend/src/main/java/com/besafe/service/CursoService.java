@@ -124,6 +124,23 @@ public class CursoService {
                                                         .descripcion(b.getDescripcion())
                                                         .build()).collect(Collectors.toList()))
                                         .build()).collect(Collectors.toList()))
+                        .cuestionarios(m.getCuestionarios() == null ? new ArrayList<>() :
+                                m.getCuestionarios().stream().map(q -> CuestionarioDTO.builder()
+                                        .idCuestionario(q.getIdCuestionario())
+                                        .titulo(q.getTitulo())
+                                        .preguntas(q.getPreguntas() == null ? new ArrayList<>() :
+                                                q.getPreguntas().stream().map(p -> PreguntaDTO.builder()
+                                                        .idPregunta(p.getIdPregunta())
+                                                        .titulo(p.getTitulo())
+                                                        .tipo(p.getTipo())
+                                                        .opciones(p.getOpciones() == null ? new ArrayList<>() :
+                                                                p.getOpciones().stream().map(o -> OpcionDTO.builder()
+                                                                        .idOpcion(o.getIdOpcion())
+                                                                        .texto(o.getTexto())
+                                                                        .esCorrecta(o.isEsCorrecta())
+                                                                        .build()).collect(Collectors.toList()))
+                                                        .build()).collect(Collectors.toList()))
+                                        .build()).collect(Collectors.toList()))
                         .build()).collect(Collectors.toList());
 
         int totalLecciones = c.getModulos() == null ? 0 :

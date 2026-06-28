@@ -16,6 +16,9 @@ export const moduloService = {
   crearLeccion: (idCurso, idModulo, data) => api.post(`/cursos/${idCurso}/modulos/${idModulo}/lecciones`, data).then(r => r.data),
   actualizarLeccion: (idCurso, idModulo, idLeccion, data) => api.put(`/cursos/${idCurso}/modulos/${idModulo}/lecciones/${idLeccion}`, data).then(r => r.data),
   eliminarLeccion: (idCurso, idModulo, idLeccion) => api.delete(`/cursos/${idCurso}/modulos/${idModulo}/lecciones/${idLeccion}`),
+  crearCuestionario: (idCurso, idModulo, data) => api.post(`/cursos/${idCurso}/modulos/${idModulo}/cuestionarios`, data).then(r => r.data),
+  actualizarCuestionario: (idCurso, idModulo, idCuestionario, data) => api.put(`/cursos/${idCurso}/modulos/${idModulo}/cuestionarios/${idCuestionario}`, data).then(r => r.data),
+  eliminarCuestionario: (idCurso, idModulo, idCuestionario) => api.delete(`/cursos/${idCurso}/modulos/${idModulo}/cuestionarios/${idCuestionario}`),
 };
 
 export const categoriaService = {
