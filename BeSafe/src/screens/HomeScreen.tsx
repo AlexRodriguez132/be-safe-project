@@ -16,6 +16,10 @@ export default function HomeScreen({ navigation }: Props) {
   setActiveTab(tab);
   if (tab === 'social') navigation.navigate('Social');
   if (tab === 'courses') navigation.navigate('Courses');
+  if (tab === 'live') navigation.navigate('LiveClasses');
+  if (tab === 'calendar') navigation.navigate('Calendar');
+  if (tab === 'profile') navigation.navigate('Profile');
+
   };
 
   return (
@@ -78,8 +82,8 @@ export default function HomeScreen({ navigation }: Props) {
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: colors.background, paddingBottom: 0 ,paddingTop: 40},
-  container: { paddingHorizontal: 16, paddingTop: 24, paddingBottom: 80 },
+  safe: { flex: 1, backgroundColor: colors.background, paddingBottom: 0 ,paddingTop: 30},
+  container: { paddingHorizontal: 16, paddingTop: 24, paddingBottom: 100 },
   greeting: { fontSize: 16, color: colors.textMuted, marginBottom: 8 },
   question: { fontSize: 24, fontWeight: '700', color: colors.textPrimary, marginBottom: 24 },
   moodContainer: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 32, gap: 6 },

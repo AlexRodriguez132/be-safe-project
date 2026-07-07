@@ -16,8 +16,12 @@ export default function CoursesScreen({ navigation }: Props) {
 
   const handleTabPress = (tab: 'home' | 'courses' | 'social' | 'live' | 'calendar' | 'profile') => {
     setActiveTab(tab);
-    if (tab === 'home') navigation.navigate('Home');
+      if (tab === 'home') navigation.navigate('Home');
     if (tab === 'social') navigation.navigate('Social');
+    if (tab === 'courses') navigation.navigate('Courses');
+    if (tab === 'calendar') navigation.navigate('Calendar');
+    if (tab === 'live') navigation.navigate('LiveClasses');
+    if (tab === 'profile') navigation.navigate('Profile');
   };
 
   const continuingCourses = [

@@ -16,6 +16,10 @@ export default function SocialScreen({ navigation }: Props) {
   const handleTabPress = (tab: 'home' | 'courses' | 'social' | 'live' | 'calendar' | 'profile') => {
     setActiveTab(tab);
     if (tab === 'home') navigation.navigate('Home');
+    if (tab === 'calendar') navigation.navigate('Calendar');
+    if (tab === 'courses') navigation.navigate('Courses');
+    if (tab === 'live') navigation.navigate('LiveClasses');
+    if (tab === 'profile') navigation.navigate('Profile');
   };
 
   return (
