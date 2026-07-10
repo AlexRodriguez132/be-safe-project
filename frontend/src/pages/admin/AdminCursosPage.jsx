@@ -41,7 +41,7 @@ export default function AdminCursosPage() {
     <div className="admin-cursos">
       <header className="admin-cursos__header">
         <h1>Cursos</h1>
-        <button className="btn btn--primary btn--new" onClick={() => navigate('/admin/cursos/nuevo')}>
+        <button className="btn--new" onClick={() => navigate('/admin/cursos/nuevo')}>
           + Nuevo curso
         </button>
       </header>
