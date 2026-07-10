@@ -1,7 +1,7 @@
-.user-layout {
+﻿.user-layout {
   display: flex;
   min-height: 100vh;
-  background: #f9fafb;
+  background: #FAFAFA;
 }
 
 .user-sidebar {
@@ -48,8 +48,8 @@
 .user-nav-link:hover { background: #f3f4f6; }
 
 .user-nav-link--active {
-  background: #d1fae5;
-  color: #065f46;
+  background: #EEFAF6;
+  color: #1E7D62;
   font-weight: 600;
 }
 
@@ -116,7 +116,7 @@
 .topbar-btn:hover { background: #f3f4f6; }
 
 .topbar-btn--avatar {
-  background: #10b981;
+  background: #59CBA5;
   color: #fff;
 }
 
@@ -126,3 +126,5 @@
   flex: 1;
   overflow: auto;
 }
+
+

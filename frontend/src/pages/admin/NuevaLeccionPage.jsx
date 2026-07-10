@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+﻿import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { cursoService, moduloService } from '../../services/cursoService';
 import './NuevaLeccionPage.css';
 
 const TIPOS_BLOQUE = [
-  { tipo: 'VIDEO', label: 'Video', desc: 'Insertar un video', color: '#10b981' },
+  { tipo: 'VIDEO', label: 'Video', desc: 'Insertar un video', color: '#59CBA5' },
   { tipo: 'IMAGEN', label: 'Imagen', desc: 'Agrega imágenes', color: '#8b5cf6' },
   { tipo: 'ARCHIVO', label: 'Archivo', desc: 'Adjunta archivos', color: '#f59e0b' },
   { tipo: 'ENLACE', label: 'Enlace', desc: 'Adjunta algún enlace', color: '#ec4899' },
@@ -150,7 +150,7 @@ export default function NuevaLeccionPage() {
 
           {bloques.length === 0 ? (
             <div className="contenido-empty">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="1.5" className="empty-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#59CBA5" strokeWidth="1.5" className="empty-icon">
                 <rect x="2" y="7" width="20" height="14" rx="2"/>
                 <path d="M16 3H8L2 7h20L16 3z"/>
                 <line x1="12" y1="11" x2="12" y2="17"/>
@@ -193,3 +193,4 @@ export default function NuevaLeccionPage() {
     </div>
   );
 }
+

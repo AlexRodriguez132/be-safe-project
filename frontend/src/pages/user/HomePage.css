@@ -1,4 +1,4 @@
-.home {
+﻿.home {
   padding: 24px 32px;
   max-width: 1100px;
 }
@@ -46,9 +46,11 @@
 
 .mood-btn:hover { background: #f3f4f6; }
 
-.mood-btn--active { background: #d1fae5; }
+.mood-btn--active { background: #EEFAF6; }
 
-.mood-emoji { font-size: 2rem; }
+.mood-icon { width: 36px; height: 36px; color: #374151; display: flex; }
+.mood-icon svg { width: 36px; height: 36px; }
+.mood-btn--active .mood-icon { color: #1E7D62; }
 
 .mood-label {
   font-size: 0.78rem;
@@ -60,3 +62,4 @@
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
 }
+

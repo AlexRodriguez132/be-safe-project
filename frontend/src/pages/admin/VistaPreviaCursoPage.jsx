@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { cursoService } from '../../services/cursoService';
 import './VistaPreviaCursoPage.css';
 
-const COLORES_BLOQUE = { VIDEO: '#10b981', IMAGEN: '#8b5cf6', ARCHIVO: '#f59e0b', ENLACE: '#ec4899' };
+const COLORES_BLOQUE = { VIDEO: '#59CBA5', IMAGEN: '#8b5cf6', ARCHIVO: '#f59e0b', ENLACE: '#ec4899' };
 
 const ICONOS = {
   VIDEO: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>,
@@ -40,7 +40,7 @@ export default function VistaPreviaCursoPage() {
         <strong>Vista previa</strong>
       </div>
 
-      <div className="vp-hero" style={{ borderLeft: `4px solid ${curso.color || '#10b981'}` }}>
+      <div className="vp-hero" style={{ borderLeft: `4px solid ${curso.color || '#59CBA5'}` }}>
         <div className="vp-hero__left">
           <span className={`estado-badge ${curso.estado ? 'estado-badge--activo' : 'estado-badge--borrador'}`}>
             {curso.estado ? 'Activo' : 'Borrador'}
@@ -58,10 +58,10 @@ export default function VistaPreviaCursoPage() {
             </span>
           </div>
         </div>
-        <div className="vp-hero__cover" style={{ backgroundColor: `${curso.color || '#10b981'}22` }}>
+        <div className="vp-hero__cover" style={{ backgroundColor: `${curso.color || '#59CBA5'}22` }}>
           {curso.portada
             ? <img src={curso.portada} alt={curso.titulo} />
-            : <svg viewBox="0 0 24 24" fill="none" stroke={curso.color || '#10b981'} strokeWidth="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            : <svg viewBox="0 0 24 24" fill="none" stroke={curso.color || '#59CBA5'} strokeWidth="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
           }
         </div>
       </div>
@@ -165,3 +165,4 @@ export default function VistaPreviaCursoPage() {
     </div>
   );
 }
+

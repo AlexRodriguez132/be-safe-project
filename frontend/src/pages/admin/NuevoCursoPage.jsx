@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { cursoService, categoriaService } from '../../services/cursoService';
 import './NuevoCursoPage.css';
 
-const COLORES = ['#10b981', '#fbbf24', '#93c5fd', '#f9a8d4'];
+const COLORES = ['#59CBA5', '#fbbf24', '#93c5fd', '#f9a8d4'];
 
 const EMPTY_FORM = {
   titulo: '',
   descripcion: '',
   url: 'https://ejemplobesafe/cursos/',
-  color: '#10b981',
+  color: '#59CBA5',
   portada: '',
   estado: true,
   idInstructor: null,
@@ -34,7 +34,7 @@ export default function NuevoCursoPage() {
           titulo: c.titulo,
           descripcion: c.descripcion || '',
           url: c.url || '',
-          color: c.color || '#10b981',
+          color: c.color || '#59CBA5',
           portada: c.portada || '',
           estado: c.estado,
           idInstructor: c.instructorId || null,
@@ -182,3 +182,4 @@ export default function NuevoCursoPage() {
     </div>
   );
 }
+

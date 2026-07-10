@@ -1,4 +1,4 @@
-.admin-cursos {
+﻿.admin-cursos {
   padding: 24px 32px;
   max-width: 1200px;
 }
@@ -21,7 +21,7 @@
   align-items: center;
   gap: 6px;
   padding: 10px 20px;
-  background: #10b981;
+  background: #59CBA5;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -57,8 +57,8 @@
 }
 
 .tab--active {
-  color: #10b981;
-  border-bottom-color: #10b981;
+  color: #59CBA5;
+  border-bottom-color: #59CBA5;
   font-weight: 600;
 }
 
@@ -71,7 +71,7 @@
   min-width: 200px;
 }
 
-.search:focus { border-color: #10b981; }
+.search:focus { border-color: #59CBA5; }
 
 .courses-grid {
   display: grid;
@@ -85,3 +85,4 @@
   margin-top: 40px;
   text-align: center;
 }
+

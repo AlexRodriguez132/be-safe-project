@@ -1,4 +1,4 @@
-.nuevo-curso {
+﻿.nuevo-curso {
   padding: 24px 32px;
   max-width: 900px;
 }
@@ -93,7 +93,7 @@
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: #10b981;
+  border-color: #59CBA5;
 }
 
 .color-picker {
@@ -140,10 +140,10 @@
   transition: border-color 0.15s;
 }
 
-.upload-zone:hover { border-color: #10b981; }
+.upload-zone:hover { border-color: #59CBA5; }
 
 .upload-label {
-  color: #10b981;
+  color: #59CBA5;
   font-weight: 600;
   margin: 0;
 }
@@ -181,7 +181,7 @@
 }
 
 .btn-save {
-  background: #10b981;
+  background: #59CBA5;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -194,3 +194,4 @@
 
 .btn-save:disabled { opacity: 0.6; cursor: not-allowed; }
 .btn-save:hover:not(:disabled) { opacity: 0.88; }
+

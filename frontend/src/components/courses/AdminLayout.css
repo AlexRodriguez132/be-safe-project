@@ -1,7 +1,7 @@
-.admin-layout {
+﻿.admin-layout {
   display: flex;
   min-height: 100vh;
-  background: #f9fafb;
+  background: #FAFAFA;
 }
 
 .sidebar {
@@ -61,8 +61,8 @@
 .nav-link:hover { background: #f3f4f6; }
 
 .nav-link--active {
-  background: #d1fae5;
-  color: #065f46;
+  background: #EEFAF6;
+  color: #1E7D62;
   font-weight: 600;
 }
 
@@ -76,3 +76,4 @@
   flex: 1;
   overflow: auto;
 }
+

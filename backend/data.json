@@ -13,28 +13,6 @@
     "descripcion" : "Técnicas de autodefensa"
   } ],
   "cursos" : [ {
-    "idCurso" : 1,
-    "titulo" : "Violencia de género",
-    "descripcion" : "Lorem ipsum dolor sit amet consectetur, adipiscing elit mollis.",
-    "url" : "violencia-de-genero",
-    "color" : "#f9a8d4",
-    "portada" : "",
-    "estado" : true,
-    "fechaCreacion" : "2026-01-10",
-    "idInstructor" : null,
-    "idsCategorias" : [ 1 ],
-    "modulos" : [ {
-      "idModulo" : 3,
-      "titulo" : "Introduccion",
-      "duracion" : "",
-      "lecciones" : [ ]
-    }, {
-      "idModulo" : 4,
-      "titulo" : "Sintomas",
-      "duracion" : "",
-      "lecciones" : [ ]
-    } ]
-  }, {
     "idCurso" : 2,
     "titulo" : "Finanzas básicas",
     "descripcion" : "Lorem ipsum dolor sit amet consectetur, adipiscing elit mollis.",
@@ -45,7 +23,13 @@
     "fechaCreacion" : "2026-02-14",
     "idInstructor" : null,
     "idsCategorias" : [ 2 ],
-    "modulos" : [ ]
+    "modulos" : [ {
+      "idModulo" : 5,
+      "titulo" : "Modulo 1",
+      "duracion" : "1 dia",
+      "lecciones" : [ ],
+      "cuestionarios" : [ ]
+    } ]
   }, {
     "idCurso" : 3,
     "titulo" : "Defensa personal",
@@ -76,7 +60,8 @@
         "titulo" : "Título de la lección",
         "descripcion" : "",
         "bloques" : [ ]
-      } ]
+      } ],
+      "cuestionarios" : [ ]
     }, {
       "idModulo" : 2,
       "titulo" : "Título del módulo",
@@ -86,7 +71,8 @@
         "titulo" : "Título del cuestionario",
         "descripcion" : "",
         "bloques" : [ ]
-      } ]
+      } ],
+      "cuestionarios" : [ ]
     } ]
   }, {
     "idCurso" : 4,
@@ -100,9 +86,45 @@
     "idInstructor" : null,
     "idsCategorias" : [ 1 ],
     "modulos" : null
+  }, {
+    "idCurso" : 5,
+    "titulo" : "Curso 1",
+    "descripcion" : "Descripcion general",
+    "url" : "https://ejemplobesafe/cursos/",
+    "color" : "#f9a8d4",
+    "portada" : "",
+    "estado" : true,
+    "fechaCreacion" : "2026-06-27",
+    "idInstructor" : null,
+    "idsCategorias" : [ 1 ],
+    "modulos" : [ {
+      "idModulo" : 6,
+      "titulo" : "Modulo 1",
+      "duracion" : "1 dia",
+      "lecciones" : [ ],
+      "cuestionarios" : [ ]
+    } ]
+  }, {
+    "idCurso" : 6,
+    "titulo" : "Curso 1",
+    "descripcion" : "Esta es una descripcion",
+    "url" : "https://ejemplobesafe/cursos/",
+    "color" : "#10b981",
+    "portada" : "",
+    "estado" : true,
+    "fechaCreacion" : "2026-07-06",
+    "idInstructor" : null,
+    "idsCategorias" : [ 1 ],
+    "modulos" : [ {
+      "idModulo" : 7,
+      "titulo" : "Modulo 1",
+      "duracion" : "3 semanas",
+      "lecciones" : [ ],
+      "cuestionarios" : [ ]
+    } ]
   } ],
-  "nextCursoId" : 5,
+  "nextCursoId" : 7,
   "nextCategoriaId" : 4,
-  "nextModuloId" : 5,
+  "nextModuloId" : 8,
   "nextLeccionId" : 5
 }
