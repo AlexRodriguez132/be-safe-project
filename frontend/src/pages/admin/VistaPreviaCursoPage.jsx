@@ -1,28 +1,15 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { cursoService } from '../../services/cursoService';
 import './VistaPreviaCursoPage.css';
 
-const ICONOS = {
-  VIDEO: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-  ),
-  IMAGEN: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-  ),
-  ARCHIVO: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-  ),
-  ENLACE: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-  ),
-};
+const COLORES_BLOQUE = { VIDEO: '#59CBA5', IMAGEN: '#8b5cf6', ARCHIVO: '#f59e0b', ENLACE: '#ec4899' };
 
-const COLORES_BLOQUE = {
-  VIDEO: '#10b981',
-  IMAGEN: '#8b5cf6',
-  ARCHIVO: '#f59e0b',
-  ENLACE: '#ec4899',
+const ICONOS = {
+  VIDEO: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>,
+  IMAGEN: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>,
+  ARCHIVO: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>,
+  ENLACE: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>,
 };
 
 export default function VistaPreviaCursoPage() {
@@ -53,8 +40,7 @@ export default function VistaPreviaCursoPage() {
         <strong>Vista previa</strong>
       </div>
 
-      {/* Hero */}
-      <div className="vp-hero" style={{ borderLeft: `4px solid ${curso.color || '#10b981'}` }}>
+      <div className="vp-hero" style={{ borderLeft: `4px solid ${curso.color || '#59CBA5'}` }}>
         <div className="vp-hero__left">
           <span className={`estado-badge ${curso.estado ? 'estado-badge--activo' : 'estado-badge--borrador'}`}>
             {curso.estado ? 'Activo' : 'Borrador'}
@@ -72,20 +58,18 @@ export default function VistaPreviaCursoPage() {
             </span>
           </div>
         </div>
-        <div className="vp-hero__cover" style={{ backgroundColor: `${curso.color || '#10b981'}22` }}>
+        <div className="vp-hero__cover" style={{ backgroundColor: `${curso.color || '#59CBA5'}22` }}>
           {curso.portada
             ? <img src={curso.portada} alt={curso.titulo} />
-            : <svg viewBox="0 0 24 24" fill="none" stroke={curso.color || '#10b981'} strokeWidth="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            : <svg viewBox="0 0 24 24" fill="none" stroke={curso.color || '#59CBA5'} strokeWidth="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
           }
         </div>
       </div>
 
-      {/* Contenido */}
       <div className="vp-body">
-        {/* Sidebar módulos */}
         <aside className="vp-sidebar">
           <h3>Módulos</h3>
-          {!curso.modulos || curso.modulos.length === 0 ? (
+          {!curso.modulos?.length ? (
             <p className="vp-empty">Sin módulos.</p>
           ) : curso.modulos.map((m, idx) => (
             <button key={m.idModulo}
@@ -97,7 +81,6 @@ export default function VistaPreviaCursoPage() {
           ))}
         </aside>
 
-        {/* Detalle módulo */}
         <div className="vp-detalle">
           {curso.modulos?.map(m => m.idModulo === moduloAbierto && (
             <div key={m.idModulo}>
@@ -106,7 +89,6 @@ export default function VistaPreviaCursoPage() {
                 {m.duracion && <span className="vp-duracion">{m.duracion}</span>}
               </div>
 
-              {/* Lecciones */}
               {m.lecciones?.length > 0 && (
                 <div className="vp-section">
                   <h4>Lecciones</h4>
@@ -123,12 +105,10 @@ export default function VistaPreviaCursoPage() {
                           {l.bloques.map((b, bIdx) => (
                             <div key={bIdx} className="vp-bloque"
                               style={{ borderLeft: `3px solid ${COLORES_BLOQUE[b.tipo] || '#9ca3af'}` }}>
-                              <span className="vp-bloque__icon" style={{ color: COLORES_BLOQUE[b.tipo] }}>
-                                {ICONOS[b.tipo]}
-                              </span>
+                              <span style={{ color: COLORES_BLOQUE[b.tipo], display: 'flex' }}>{ICONOS[b.tipo]}</span>
                               <div>
                                 <span className="vp-bloque__tipo">{b.tipo}</span>
-                                {b.contenido && <span className="vp-bloque__contenido">{b.contenido}</span>}
+                                {b.contenido && <span className="vp-bloque__contenido"> — {b.contenido}</span>}
                               </div>
                             </div>
                           ))}
@@ -139,7 +119,6 @@ export default function VistaPreviaCursoPage() {
                 </div>
               )}
 
-              {/* Cuestionarios */}
               {m.cuestionarios?.length > 0 && (
                 <div className="vp-section">
                   <h4>Cuestionarios</h4>
@@ -150,40 +129,35 @@ export default function VistaPreviaCursoPage() {
                         <strong>{q.titulo || 'Sin título'}</strong>
                         <span className="vp-tag vp-tag--quiz">Cuestionario</span>
                       </div>
-                      {q.preguntas?.length > 0 && (
-                        <div className="vp-preguntas">
-                          {q.preguntas.map((p, pIdx) => (
-                            <div key={p.idPregunta || pIdx} className="vp-pregunta">
-                              <p className="vp-pregunta__titulo">{pIdx + 1}. {p.titulo}</p>
-                              <div className="vp-opciones">
-                                {p.opciones?.map((o, oIdx) => (
-                                  <div key={oIdx} className="vp-opcion">
-                                    {p.tipo === 'UNA_OPCION'
-                                      ? <div className="radio-circle" />
-                                      : <div className="checkbox-square" />
-                                    }
-                                    <span>{o.texto}</span>
-                                  </div>
-                                ))}
+                      {q.preguntas?.map((p, pIdx) => (
+                        <div key={p.idPregunta || pIdx} className="vp-pregunta">
+                          <p className="vp-pregunta__titulo">{pIdx + 1}. {p.titulo}</p>
+                          <div className="vp-opciones">
+                            {p.opciones?.map((o, oIdx) => (
+                              <div key={oIdx} className={`vp-opcion ${o.esCorrecta ? 'vp-opcion--correcta' : ''}`}>
+                                <div className={`vp-opcion-ind ${o.esCorrecta ? 'vp-opcion-ind--correcta' : ''}`}
+                                  style={{ borderRadius: p.tipo === 'UNA_OPCION' ? '50%' : '3px' }} />
+                                <span>{o.texto}</span>
+                                {o.esCorrecta && <span className="vp-correcta-badge">Correcta</span>}
                               </div>
-                            </div>
-                          ))}
+                            ))}
+                          </div>
                         </div>
-                      )}
+                      ))}
                     </div>
                   ))}
                 </div>
               )}
 
               {(!m.lecciones?.length && !m.cuestionarios?.length) && (
-                <p className="vp-empty">Este módulo no tiene recursos aún.</p>
+                <p className="vp-empty">Sin recursos aún.</p>
               )}
             </div>
           ))}
         </div>
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: 8 }}>
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <button className="btn-volver" onClick={() => navigate(`/admin/cursos/${id}/detalle`)}>
           Volver al editor
         </button>
@@ -191,3 +165,4 @@ export default function VistaPreviaCursoPage() {
     </div>
   );
 }
+

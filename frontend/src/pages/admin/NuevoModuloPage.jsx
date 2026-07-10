@@ -10,12 +10,12 @@ export default function NuevoModuloPage() {
 
   const [cursotitulo, setCursoTitulo] = useState('');
   const [modulo, setModulo] = useState(null);
-  const [menuRecurso, setMenuRecurso] = useState(false);
-  const menuRecursoRef = useRef(null);
   const [titulo, setTitulo] = useState('');
   const [duracion, setDuracion] = useState('');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
+  const [menuRecurso, setMenuRecurso] = useState(false);
+  const menuRef = useRef(null);
 
   useEffect(() => {
     cursoService.obtenerPorId(id).then(c => {
@@ -30,6 +30,14 @@ export default function NuevoModuloPage() {
       }
     });
   }, [id, idModulo]);
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) setMenuRecurso(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,24 +59,26 @@ export default function NuevoModuloPage() {
     }
   };
 
-  const eliminarLeccion = async (idLeccion) => {
-    if (!window.confirm('¿Eliminar esta lección?')) return;
-    await moduloService.eliminarLeccion(id, idModulo, idLeccion);
+  const recargar = async () => {
     const c = await cursoService.obtenerPorId(id);
     const m = c.modulos?.find(m => String(m.idModulo) === String(idModulo));
     setModulo(m);
   };
 
-  const lecciones = modulo?.lecciones || [];
-  const cuestionarios = modulo?.cuestionarios || [];
+  const eliminarLeccion = async (idLeccion) => {
+    if (!window.confirm('¿Eliminar esta lección?')) return;
+    await moduloService.eliminarLeccion(id, idModulo, idLeccion);
+    recargar();
+  };
 
   const eliminarCuestionario = async (idCuestionario) => {
     if (!window.confirm('¿Eliminar este cuestionario?')) return;
     await moduloService.eliminarCuestionario(id, idModulo, idCuestionario);
-    const c = await cursoService.obtenerPorId(id);
-    const m = c.modulos?.find(m => String(m.idModulo) === String(idModulo));
-    setModulo(m);
+    recargar();
   };
+
+  const lecciones = modulo?.lecciones || [];
+  const cuestionarios = modulo?.cuestionarios || [];
 
   return (
     <div className="nuevo-modulo">
@@ -101,27 +111,25 @@ export default function NuevoModuloPage() {
                 placeholder="Escribe el título de módulo" />
             </div>
             <div className="form-group">
-              <label>Duración *</label>
+              <label>Duración</label>
               <input value={duracion} onChange={e => setDuracion(e.target.value)}
                 placeholder="Ej: 3 semanas, 5 horas" />
             </div>
           </div>
-
           <button type="submit" className="btn-save" disabled={saving}>
             {saving ? 'Guardando...' : 'Guardar módulo'}
           </button>
         </form>
       </div>
 
-      {/* Lecciones — solo en edición */}
       {esEdicion && (
         <div className="lecciones-card">
           <div className="lecciones-card__header">
             <div>
-              <h2>Tareas del curso</h2>
-              <p>Agrega tareas a tus módulos</p>
+              <h2>Recursos del módulo</h2>
+              <p>Lecciones y cuestionarios de este módulo</p>
             </div>
-            <div ref={menuRecursoRef} style={{ position: 'relative' }}>
+            <div ref={menuRef} style={{ position: 'relative' }}>
               <button className="btn-crear" onClick={() => setMenuRecurso(o => !o)}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
                 Añadir recurso
@@ -142,9 +150,9 @@ export default function NuevoModuloPage() {
           </div>
 
           <div className="lecciones-list">
-            {lecciones.length === 0 && cuestionarios.length === 0 ? (
+            {lecciones.length === 0 && cuestionarios.length === 0 && (
               <p className="empty">Sin recursos aún.</p>
-            ) : null}
+            )}
             {lecciones.map(l => (
               <div key={l.idLeccion} className="leccion-item">
                 <span className="leccion-item__tag leccion-item__tag--leccion">Lección</span>

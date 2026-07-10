@@ -58,20 +58,15 @@ export default function NuevoCuestionarioPage() {
     });
   }, [id, idModulo, idCuestionario]);
 
-  const agregarPregunta = () => {
-    setPreguntas(p => [...p, preguntaVacia(Date.now())]);
-  };
+  const agregarPregunta = () => setPreguntas(p => [...p, preguntaVacia(Date.now())]);
 
-  const actualizarPregunta = (idx, field, value) => {
+  const actualizarPregunta = (idx, field, value) =>
     setPreguntas(p => p.map((pr, i) => i === idx ? { ...pr, [field]: value } : pr));
-  };
 
-  const cambiarTipo = (idx, tipo) => {
-    // reset correctas al cambiar tipo
+  const cambiarTipo = (idx, tipo) =>
     setPreguntas(p => p.map((pr, i) => i === idx
       ? { ...pr, tipo, opciones: pr.opciones.map(o => ({ ...o, esCorrecta: false })) }
       : pr));
-  };
 
   const agregarOpcion = (idx) => {
     const ts = Date.now();
@@ -80,34 +75,26 @@ export default function NuevoCuestionarioPage() {
       : pr));
   };
 
-  const actualizarOpcion = (pIdx, oIdx, valor) => {
+  const actualizarOpcion = (pIdx, oIdx, valor) =>
     setPreguntas(p => p.map((pr, i) => i === pIdx
       ? { ...pr, opciones: pr.opciones.map((o, j) => j === oIdx ? { ...o, texto: valor } : o) }
       : pr));
-  };
 
-  const toggleCorrecta = (pIdx, oIdx) => {
+  const toggleCorrecta = (pIdx, oIdx) =>
     setPreguntas(p => p.map((pr, i) => {
       if (i !== pIdx) return pr;
       if (pr.tipo === 'UNA_OPCION') {
-        // solo una correcta
         return { ...pr, opciones: pr.opciones.map((o, j) => ({ ...o, esCorrecta: j === oIdx })) };
-      } else {
-        // varias correctas
-        return { ...pr, opciones: pr.opciones.map((o, j) => j === oIdx ? { ...o, esCorrecta: !o.esCorrecta } : o) };
       }
+      return { ...pr, opciones: pr.opciones.map((o, j) => j === oIdx ? { ...o, esCorrecta: !o.esCorrecta } : o) };
     }));
-  };
 
-  const eliminarPregunta = (idx) => {
-    setPreguntas(p => p.filter((_, i) => i !== idx));
-  };
+  const eliminarPregunta = (idx) => setPreguntas(p => p.filter((_, i) => i !== idx));
 
-  const eliminarOpcion = (pIdx, oIdx) => {
+  const eliminarOpcion = (pIdx, oIdx) =>
     setPreguntas(p => p.map((pr, i) => i === pIdx
       ? { ...pr, opciones: pr.opciones.filter((_, j) => j !== oIdx) }
       : pr));
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -121,11 +108,7 @@ export default function NuevoCuestionarioPage() {
           idPregunta: p.idPregunta,
           titulo: p.titulo,
           tipo: p.tipo,
-          opciones: p.opciones.map(o => ({
-            idOpcion: o.idOpcion,
-            texto: o.texto,
-            esCorrecta: o.esCorrecta,
-          })),
+          opciones: p.opciones.map(o => ({ idOpcion: o.idOpcion, texto: o.texto, esCorrecta: o.esCorrecta })),
         })),
       };
       if (esEdicion) {
@@ -164,9 +147,7 @@ export default function NuevoCuestionarioPage() {
               <p>Crea preguntas con respuestas correctas para evaluar a tus estudiantes</p>
             </div>
           </div>
-
           {error && <p className="form-error">{error}</p>}
-
           <div className="form-group">
             <label>Título del cuestionario *</label>
             <input value={titulo} onChange={e => setTitulo(e.target.value)}
@@ -186,7 +167,6 @@ export default function NuevoCuestionarioPage() {
           <div className="preguntas-list">
             {preguntas.map((p, pIdx) => (
               <div key={p._id} className="pregunta-card">
-                {/* Fila título + tipo + eliminar */}
                 <div className="pregunta-card__top">
                   <div className="form-group" style={{ flex: 1 }}>
                     <label>Pregunta {pIdx + 1} *</label>
@@ -208,7 +188,6 @@ export default function NuevoCuestionarioPage() {
                   </button>
                 </div>
 
-                {/* Opciones */}
                 <div className="opciones-section">
                   <div className="opciones-header">
                     <span className="opciones-label">Opciones de respuesta</span>
@@ -216,29 +195,21 @@ export default function NuevoCuestionarioPage() {
                       {p.tipo === 'UNA_OPCION' ? 'Selecciona la respuesta correcta' : 'Selecciona las respuestas correctas'}
                     </span>
                   </div>
-
                   <div className="opciones-list">
                     {p.opciones.map((o, oIdx) => (
                       <div key={o._id} className={`opcion-item ${o.esCorrecta ? 'opcion-item--correcta' : ''}`}>
-                        {/* Indicador tipo */}
                         <div className={`tipo-indicator ${o.esCorrecta ? 'tipo-indicator--active' : ''}`}
                           style={{ borderRadius: p.tipo === 'UNA_OPCION' ? '50%' : '4px' }} />
-
-                        {/* Texto opción */}
                         <input className="opcion-input" value={o.texto}
                           onChange={e => actualizarOpcion(pIdx, oIdx, e.target.value)} />
-
-                        {/* Botón marcar correcta */}
                         <button type="button"
                           className={`btn-correcta ${o.esCorrecta ? 'btn-correcta--active' : ''}`}
                           onClick={() => toggleCorrecta(pIdx, oIdx)}
                           title={o.esCorrecta ? 'Quitar como correcta' : 'Marcar como correcta'}>
-                          <svg viewBox="0 0 24 24" fill={o.esCorrecta ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2">
+                          <svg viewBox="0 0 24 24" fill={o.esCorrecta ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2.5">
                             <polyline points="20 6 9 17 4 12"/>
                           </svg>
                         </button>
-
-                        {/* Eliminar opción */}
                         {p.opciones.length > 2 && (
                           <button type="button" className="opcion-del" onClick={() => eliminarOpcion(pIdx, oIdx)}>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -247,7 +218,6 @@ export default function NuevoCuestionarioPage() {
                       </div>
                     ))}
                   </div>
-
                   <button type="button" className="btn-add-opcion" onClick={() => agregarOpcion(pIdx)}>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                     Agregar opción

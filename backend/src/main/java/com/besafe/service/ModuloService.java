@@ -19,14 +19,15 @@ public class ModuloService {
 
     public ModuloDTO crear(Long idCurso, ModuloDTO dto) throws IOException {
         CursoModel curso = getCurso(idCurso);
+        if (curso.getModulos() == null) curso.setModulos(new ArrayList<>());
         ModuloModel modulo = ModuloModel.builder()
                 .idModulo(store.getData().getNextModuloId())
                 .titulo(dto.getTitulo())
                 .duracion(dto.getDuracion())
                 .lecciones(new ArrayList<>())
+                .cuestionarios(new ArrayList<>())
                 .build();
         store.getData().setNextModuloId(store.getData().getNextModuloId() + 1);
-        if (curso.getModulos() == null) curso.setModulos(new ArrayList<>());
         curso.getModulos().add(modulo);
         store.save();
         return toDTO(modulo);
@@ -52,8 +53,11 @@ public class ModuloService {
         store.save();
     }
 
+    // --- Lecciones ---
+
     public LeccionDTO crearLeccion(Long idCurso, Long idModulo, LeccionDTO dto) throws IOException {
         ModuloModel modulo = getModulo(idCurso, idModulo);
+        if (modulo.getLecciones() == null) modulo.setLecciones(new ArrayList<>());
         LeccionModel leccion = LeccionModel.builder()
                 .idLeccion(store.getData().getNextLeccionId())
                 .titulo(dto.getTitulo())
@@ -98,18 +102,14 @@ public class ModuloService {
     public CuestionarioDTO crearCuestionario(Long idCurso, Long idModulo, CuestionarioDTO dto) throws IOException {
         ModuloModel modulo = getModulo(idCurso, idModulo);
         if (modulo.getCuestionarios() == null) modulo.setCuestionarios(new ArrayList<>());
-
         long nextId = store.getData().getNextLeccionId();
         store.getData().setNextLeccionId(nextId + 1);
-
         List<PreguntaModel> preguntas = buildPreguntas(dto.getPreguntas(), new long[]{nextId * 100});
-
         CuestionarioModel cuestionario = CuestionarioModel.builder()
                 .idCuestionario(nextId)
                 .titulo(dto.getTitulo())
                 .preguntas(preguntas)
                 .build();
-
         modulo.getCuestionarios().add(cuestionario);
         store.save();
         return toCuestionarioDTO(cuestionario);
@@ -117,8 +117,7 @@ public class ModuloService {
 
     public CuestionarioDTO actualizarCuestionario(Long idCurso, Long idModulo, Long idCuestionario, CuestionarioDTO dto) throws IOException {
         ModuloModel modulo = getModulo(idCurso, idModulo);
-        List<CuestionarioModel> lista = modulo.getCuestionarios();
-        for (CuestionarioModel c : lista) {
+        for (CuestionarioModel c : modulo.getCuestionarios()) {
             if (c.getIdCuestionario().equals(idCuestionario)) {
                 c.setTitulo(dto.getTitulo());
                 c.setPreguntas(buildPreguntas(dto.getPreguntas(), new long[]{idCuestionario * 100}));
@@ -134,6 +133,8 @@ public class ModuloService {
                 .removeIf(c -> c.getIdCuestionario().equals(idCuestionario));
         store.save();
     }
+
+    // --- Helpers ---
 
     private List<PreguntaModel> buildPreguntas(List<PreguntaDTO> dtos, long[] seed) {
         if (dtos == null) return new ArrayList<>();
@@ -173,20 +174,6 @@ public class ModuloService {
                 .build();
     }
 
-    private CursoModel getCurso(Long idCurso) {
-        return store.getData().getCursos().stream()
-                .filter(c -> c.getIdCurso().equals(idCurso))
-                .findFirst()
-                .orElseThrow(() -> new RuntimeException("Curso no encontrado: " + idCurso));
-    }
-
-    private ModuloModel getModulo(Long idCurso, Long idModulo) {
-        return getCurso(idCurso).getModulos().stream()
-                .filter(m -> m.getIdModulo().equals(idModulo))
-                .findFirst()
-                .orElseThrow(() -> new RuntimeException("Módulo no encontrado: " + idModulo));
-    }
-
     private ModuloDTO toDTO(ModuloModel m) {
         return ModuloDTO.builder()
                 .idModulo(m.getIdModulo())
@@ -212,5 +199,19 @@ public class ModuloService {
                                 .descripcion(b.getDescripcion())
                                 .build()).collect(Collectors.toList()))
                 .build();
+    }
+
+    private CursoModel getCurso(Long idCurso) {
+        return store.getData().getCursos().stream()
+                .filter(c -> c.getIdCurso().equals(idCurso))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Curso no encontrado: " + idCurso));
+    }
+
+    private ModuloModel getModulo(Long idCurso, Long idModulo) {
+        return getCurso(idCurso).getModulos().stream()
+                .filter(m -> m.getIdModulo().equals(idModulo))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Módulo no encontrado: " + idModulo));
     }
 }

@@ -13,30 +13,6 @@
     "descripcion" : "Técnicas de autodefensa"
   } ],
   "cursos" : [ {
-    "idCurso" : 1,
-    "titulo" : "Violencia de género",
-    "descripcion" : "Lorem ipsum dolor sit amet consectetur, adipiscing elit mollis.",
-    "url" : "violencia-de-genero",
-    "color" : "#f9a8d4",
-    "portada" : "",
-    "estado" : true,
-    "fechaCreacion" : "2026-01-10",
-    "idInstructor" : null,
-    "idsCategorias" : [ 1 ],
-    "modulos" : [ {
-      "idModulo" : 3,
-      "titulo" : "Introduccion",
-      "duracion" : "",
-      "lecciones" : [ ],
-      "cuestionarios" : [ ]
-    }, {
-      "idModulo" : 4,
-      "titulo" : "Sintomas",
-      "duracion" : "",
-      "lecciones" : [ ],
-      "cuestionarios" : [ ]
-    } ]
-  }, {
     "idCurso" : 2,
     "titulo" : "Finanzas básicas",
     "descripcion" : "Lorem ipsum dolor sit amet consectetur, adipiscing elit mollis.",
@@ -47,7 +23,13 @@
     "fechaCreacion" : "2026-02-14",
     "idInstructor" : null,
     "idsCategorias" : [ 2 ],
-    "modulos" : [ ]
+    "modulos" : [ {
+      "idModulo" : 5,
+      "titulo" : "Modulo 1",
+      "duracion" : "1 dia",
+      "lecciones" : [ ],
+      "cuestionarios" : [ ]
+    } ]
   }, {
     "idCurso" : 3,
     "titulo" : "Defensa personal",
@@ -106,57 +88,87 @@
     "modulos" : null
   }, {
     "idCurso" : 5,
-    "titulo" : "Identificar la violencia",
-    "descripcion" : "Sobre identificar la violencia",
-    "url" : "https://ejemplobesafe/cursos/",
-    "color" : "#93c5fd",
-    "portada" : "",
-    "estado" : true,
-    "fechaCreacion" : "2026-06-27",
-    "idInstructor" : null,
-    "idsCategorias" : [ 3 ],
-    "modulos" : null
-  }, {
-    "idCurso" : 6,
     "titulo" : "Curso 1",
-    "descripcion" : "Curso de prueba 1",
+    "descripcion" : "Descripcion general",
     "url" : "https://ejemplobesafe/cursos/",
     "color" : "#f9a8d4",
     "portada" : "",
     "estado" : true,
     "fechaCreacion" : "2026-06-27",
     "idInstructor" : null,
-    "idsCategorias" : [ 2 ],
+    "idsCategorias" : [ 1 ],
     "modulos" : [ {
-      "idModulo" : 5,
+      "idModulo" : 6,
       "titulo" : "Modulo 1",
-      "duracion" : "5 horas",
+      "duracion" : "1 dia",
       "lecciones" : [ {
         "idLeccion" : 5,
-        "titulo" : "Leccion de prueba",
-        "descripcion" : "Esta es una leccion de prueba donde veremos como se ve con lecciones",
+        "titulo" : "URL",
+        "descripcion" : "Aqui has una representacion de la url",
         "bloques" : [ ]
       } ],
+      "cuestionarios" : [ ]
+    }, {
+      "idModulo" : 8,
+      "titulo" : "Modulo 1",
+      "duracion" : "3 semanas",
+      "lecciones" : [ ],
       "cuestionarios" : [ {
         "idCuestionario" : 6,
-        "titulo" : "Pregunta alusiva de prueba",
+        "titulo" : "Cuestionario 1",
         "preguntas" : [ {
-          "idPregunta" : 602,
-          "titulo" : "2+2",
-          "tipo" : "MAS_OPCIONES",
+          "idPregunta" : 603,
+          "titulo" : "Cuatos huesos tiene el cuerpo huma?",
+          "tipo" : "UNA_OPCION",
           "opciones" : [ {
             "idOpcion" : 600,
-            "texto" : "1"
+            "texto" : "1",
+            "esCorrecta" : false
           }, {
             "idOpcion" : 601,
-            "texto" : "2"
+            "texto" : "2",
+            "esCorrecta" : true
+          }, {
+            "idOpcion" : 602,
+            "texto" : "3",
+            "esCorrecta" : false
           } ]
         } ]
       } ]
     } ]
+  }, {
+    "idCurso" : 6,
+    "titulo" : "Curso 1",
+    "descripcion" : "Esta es una descripcion",
+    "url" : "https://ejemplobesafe/cursos/",
+    "color" : "#10b981",
+    "portada" : "",
+    "estado" : true,
+    "fechaCreacion" : "2026-07-06",
+    "idInstructor" : null,
+    "idsCategorias" : [ 1 ],
+    "modulos" : [ {
+      "idModulo" : 7,
+      "titulo" : "Modulo 1",
+      "duracion" : "3 semanas",
+      "lecciones" : [ ],
+      "cuestionarios" : [ ]
+    } ]
+  }, {
+    "idCurso" : 7,
+    "titulo" : "Test curso",
+    "descripcion" : "desc",
+    "url" : "https://test",
+    "color" : "#59CBA5",
+    "portada" : "",
+    "estado" : true,
+    "fechaCreacion" : "2026-07-10",
+    "idInstructor" : null,
+    "idsCategorias" : [ ],
+    "modulos" : null
   } ],
-  "nextCursoId" : 7,
+  "nextCursoId" : 9,
   "nextCategoriaId" : 4,
-  "nextModuloId" : 6,
+  "nextModuloId" : 9,
   "nextLeccionId" : 7
 }

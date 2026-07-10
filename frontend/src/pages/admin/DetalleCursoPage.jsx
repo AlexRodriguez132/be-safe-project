@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { cursoService, categoriaService, moduloService } from '../../services/cursoService';
 import './DetalleCursoPage.css';
 
-const COLORES = ['#10b981', '#fbbf24', '#93c5fd', '#f9a8d4'];
+const COLORES = ['#59CBA5', '#fbbf24', '#93c5fd', '#f9a8d4'];
 
 export default function DetalleCursoPage() {
   const { id } = useParams();
@@ -201,3 +201,4 @@ export default function DetalleCursoPage() {
     </div>
   );
 }
+

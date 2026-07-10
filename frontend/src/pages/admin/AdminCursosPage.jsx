@@ -8,7 +8,6 @@ const TABS = [
   { label: 'Todos', value: null },
   { label: 'Activos', value: true },
   { label: 'Borradores', value: false },
-  { label: 'Archivados', value: 'archivados' },
 ];
 
 export default function AdminCursosPage() {
@@ -42,40 +41,29 @@ export default function AdminCursosPage() {
     <div className="admin-cursos">
       <header className="admin-cursos__header">
         <h1>Cursos</h1>
-        <button className="btn btn--primary btn--new" onClick={() => navigate('/admin/cursos/nuevo')}>
+        <button className="btn--new" onClick={() => navigate('/admin/cursos/nuevo')}>
           + Nuevo curso
         </button>
       </header>
 
       <div className="admin-cursos__toolbar">
-        <div className="toolbar-top">
-          <div className="tabs">
-            {TABS.map(t => (
-              <button
-                key={String(t.value)}
-                className={`tab ${tab === t.value ? 'tab--active' : ''}`}
-                onClick={() => setTab(t.value)}
-              >
-                {t.label}
-              </button>
-            ))}
-          </div>
-          <div className="toolbar-right">
-            <div className="search-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              <input
-                className="search"
-                placeholder="Buscar curso..."
-                value={buscar}
-                onChange={e => setBuscar(e.target.value)}
-              />
-            </div>
-            <button className="filtros-btn">
-              Filtros
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+        <div className="tabs">
+          {TABS.map(t => (
+            <button
+              key={String(t.value)}
+              className={`tab ${tab === t.value ? 'tab--active' : ''}`}
+              onClick={() => setTab(t.value)}
+            >
+              {t.label}
             </button>
-          </div>
+          ))}
         </div>
+        <input
+          className="search"
+          placeholder="Buscar curso..."
+          value={buscar}
+          onChange={e => setBuscar(e.target.value)}
+        />
       </div>
 
       {loading ? (
