@@ -101,8 +101,40 @@
       "idModulo" : 6,
       "titulo" : "Modulo 1",
       "duracion" : "1 dia",
-      "lecciones" : [ ],
+      "lecciones" : [ {
+        "idLeccion" : 5,
+        "titulo" : "URL",
+        "descripcion" : "Aqui has una representacion de la url",
+        "bloques" : [ ]
+      } ],
       "cuestionarios" : [ ]
+    }, {
+      "idModulo" : 8,
+      "titulo" : "Modulo 1",
+      "duracion" : "3 semanas",
+      "lecciones" : [ ],
+      "cuestionarios" : [ {
+        "idCuestionario" : 6,
+        "titulo" : "Cuestionario 1",
+        "preguntas" : [ {
+          "idPregunta" : 603,
+          "titulo" : "Cuatos huesos tiene el cuerpo huma?",
+          "tipo" : "UNA_OPCION",
+          "opciones" : [ {
+            "idOpcion" : 600,
+            "texto" : "1",
+            "esCorrecta" : false
+          }, {
+            "idOpcion" : 601,
+            "texto" : "2",
+            "esCorrecta" : true
+          }, {
+            "idOpcion" : 602,
+            "texto" : "3",
+            "esCorrecta" : false
+          } ]
+        } ]
+      } ]
     } ]
   }, {
     "idCurso" : 6,
@@ -122,9 +154,21 @@
       "lecciones" : [ ],
       "cuestionarios" : [ ]
     } ]
+  }, {
+    "idCurso" : 7,
+    "titulo" : "Test curso",
+    "descripcion" : "desc",
+    "url" : "https://test",
+    "color" : "#59CBA5",
+    "portada" : "",
+    "estado" : true,
+    "fechaCreacion" : "2026-07-10",
+    "idInstructor" : null,
+    "idsCategorias" : [ ],
+    "modulos" : null
   } ],
-  "nextCursoId" : 7,
+  "nextCursoId" : 9,
   "nextCategoriaId" : 4,
-  "nextModuloId" : 8,
-  "nextLeccionId" : 5
+  "nextModuloId" : 9,
+  "nextLeccionId" : 7
 }
