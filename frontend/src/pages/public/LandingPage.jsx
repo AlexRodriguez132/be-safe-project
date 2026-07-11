@@ -17,89 +17,32 @@ export default function LandingPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="landing">
-      <header className="landing-header">
-        <div className="landing-logo">BE SAFE</div>
-        <nav className="landing-nav">
-          <a href="#inicio">Inicio</a>
-          <a href="#recursos">Recursos</a>
-          <a href="#precios">Precios</a>
-        </nav>
-        <div className="landing-header__actions">
-          <button className="btn-link" onClick={() => navigate('/login')}>Iniciar sesión</button>
-          <button className="btn-primary" onClick={() => navigate('/registro')}>Registrarse</button>
-        </div>
-      </header>
-
-      <main>
-        <section className="landing-hero">
-          <div className="landing-hero__text">
-            <h1>
-              Tu espacio seguro para{' '}
-              <span className="highlight">aprender,</span>{' '}
-              <span className="highlight">sanar</span>{' '}
-              y crecer.
-            </h1>
-            <p>
-              Cursos y recursos diseñados para acompañarte en momentos difíciles.
-              Aprende a tu ritmo, con herramientas prácticas y apoyo real.
-            </p>
-            <div className="landing-hero__btns">
-              <button className="btn-primary btn-large" onClick={() => navigate('/registro')}>
-                Comenzar gratis
-              </button>
-              <button className="btn-outline btn-large" onClick={() => navigate('/login')}>
-                Iniciar sesión
-              </button>
-            </div>
+      <div className="container">
+          <div className="navbar">
+              <div className="navbarLogo">BE SAFE</div>
+              <div className="navigation">
+                  <a>Inicio</a>
+                  <a>Recursos</a>
+                  <a>Precios</a>
+              </div>
+              <div className="buttons">
+                  <button className="btn-login">Iniciar Sesión</button>
+                  <button className="btn-register">Registrarse</button>
+              </div>
           </div>
-
-          <div className="landing-hero__mockup">
-            <div className="mockup-card">
-              <div className="mockup-sidebar">
-                <div className="mockup-logo">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#59CBA5" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                  <span>BE SAFE</span>
-                </div>
-                {['Inicio','Mis cursos','Grupos de apoyo','Clases en vivo','Asesorias','Calendario','Mensajes','Recursos','Configuración'].map(item => (
-                  <div key={item} className="mockup-nav-item">{item}</div>
-                ))}
+          <div className="container-one">
+              <div className="left">
+                  <h1 className="title">Tu espacio seguro para <strong className="green">aprender, sanar</strong> y <strong>crecer.</strong></h1>
+                  <p className="text">Cursos y recursos diseñados para acompañarte en momentos dificiles. Aprende a tu ritmo, con herramientas prácticas y apoyo real.</p>
+                  <div className="buttons-2">
+                      <button className="btn-start-free">Comenzar gratis</button>
+                      <button className="btn-login2">Iniciar sesión</button>
+                  </div>
               </div>
-              <div className="mockup-content">
-                <div className="mockup-greeting">Hola, Karina</div>
-                <div className="mockup-mood-title">¿Cómo te sientes hoy?</div>
-                <div className="mockup-moods">
-                  {['#E8B4C9','#F4D89F','#C8D9AB','#ABC9E3','#9FC9B3'].map((c,i) => (
-                    <div key={i} className="mockup-mood" style={{ background: c }} />
-                  ))}
-                </div>
-                <div className="mockup-section-title">Continua aprendiendo</div>
-                <div className="mockup-courses">
-                  {[{c:'#DFEBFA',label:'Violencia de\ngénero'},{c:'#FDF4E8',label:'Finanzas\nbásicas'},{c:'#FEEFF5',label:'Defensa\npersonal'}].map((item,i) => (
-                    <div key={i} className="mockup-course" style={{ background: item.c }}>
-                      <div className="mockup-course-img" />
-                      <div className="mockup-course-label">{item.label}</div>
-                      <div className="mockup-progress"><div className="mockup-progress-bar" style={{ width: `${[60,25,33][i]}%` }} /></div>
-                    </div>
-                  ))}
-                </div>
+              <div className="right">
+                  <img className="image" src="src/pages/auth/img/ImagenLandingPage.png" alt="Pagina BeSafe" />
               </div>
-            </div>
           </div>
-        </section>
-
-        <section className="landing-features">
-          {FEATURES.map(({ Icon, title, desc, color }) => (
-            <div key={title} className="feature-card">
-              <div className="feature-icon" style={{ color }}>
-                <Icon />
-              </div>
-              <h3 style={{ color }}>{title}</h3>
-              <p>{desc}</p>
-            </div>
-          ))}
-        </section>
-      </main>
-    </div>
+      </div>
   );
 }
