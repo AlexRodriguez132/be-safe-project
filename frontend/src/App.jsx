@@ -15,6 +15,8 @@ import AdminDashboardPage from './pages/admin/AdminDashboardPage';
 import HomePage from './pages/user/HomePage';
 import MisCursosPage from './pages/user/MisCursosPage';
 import './styles/global.css';
+import InstructorDashboardPage from './instructor/InstructorDashboardPage';
+import InstructorLayout from './components/instructor/InstructorLayout';
 
 export default function App() {
   return (
@@ -57,6 +59,13 @@ export default function App() {
           <Route path="grupos" element={<PlaceholderPage title="Grupos" />} />
           <Route path="configuracion" element={<PlaceholderPage title="Configuración" />} />
         </Route>
+
+        <Route path="/instructor" element={<InstructorLayout/>}>
+            <Route index element={<Navigate to="/instructor/dashboard"/>}/>
+            <Route path="dashboard" element={<InstructorDashboardPage/>}/>
+        </Route>
+
+
       </Routes>
     </BrowserRouter>
   );

@@ -1,0 +1,92 @@
+.navbar-dashboard{
+    display: flex;
+    padding: 16px 2% 16px 2%;
+    justify-content: space-between;
+}
+
+.btns-right{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-notifications{
+    background-color: transparent;
+    border-radius: 50px;
+    border: none;
+    height: 40px;
+    width: 40px;
+    padding-top: 5px;
+    padding-left: 5px;
+    transition: stroke 0.2s ease;
+}
+
+.btn-notifications:hover{
+    background: #f3f4f6;
+}
+
+.btn-notifications svg path {
+    transition: stroke 0.2s ease;
+}
+
+.btn-notifications:hover svg path{
+    stroke: #59C9A5;
+}
+
+.btn-profile{
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    background-color: #59C9A5;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.btn-profile:hover{
+    background-color: #1E7D62;
+}
+
+.container-one-dashboard{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.cards-top{
+    background-color: #ffffff;
+    height: 150px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+}
+
+.container-two-dashboard{
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.cards-center{
+    background-color: #ffffff;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+}
+
+.container-three-dashboard{
+    margin-top: 32px;
+    display: grid;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.card-bottom {
+    background-color: #ffffff;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+}
