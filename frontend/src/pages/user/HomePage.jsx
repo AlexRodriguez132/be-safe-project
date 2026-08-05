@@ -29,6 +29,7 @@ export default function HomePage() {
   const [cursos, setCursos] = useState([]);
   const [moodActivo, setMoodActivo] = useState(null);
   const [loading, setLoading] = useState(true);
+  const userName = localStorage.getItem('userName') || 'Usuario';
 
   useEffect(() => {
     cursoService.listarPopulares()
@@ -40,7 +41,7 @@ export default function HomePage() {
     <div className="home">
       <div className="home__greeting">
         <p className="home__label">Inicio</p>
-        <h2>Hola, Karina</h2>
+        <h2>Hola, {userName}</h2>
       </div>
 
       <section className="mood-section">
@@ -99,7 +100,7 @@ export default function HomePage() {
                         3.5 hrs
                       </span>
                     </div>
-                    <button className="home-course-btn" onClick={() => navigate(`/admin/cursos/${c.idCurso}/detalle`)}>
+                    <button className="home-course-btn" onClick={() => navigate(`/cursos/${c.idCurso}`)}>
                       Ver curso
                     </button>
                   </div>

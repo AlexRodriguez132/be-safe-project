@@ -15,8 +15,13 @@ import AdminDashboardPage from './pages/admin/AdminDashboardPage';
 import HomePage from './pages/user/HomePage';
 import MisCursosPage from './pages/user/MisCursosPage';
 import './styles/global.css';
-import InstructorDashboardPage from './instructor/InstructorDashboardPage';
 import InstructorLayout from './components/instructor/InstructorLayout';
+import InstructorDashboardPage from './instructor/dashboard/InstructorDashboardPage';
+import InstructorCalendarioPage from './instructor/calendar/InstructorCalendarioPage';
+import InstructorHorariosPage from './instructor/schedule/InstructorHorariosPage';
+import InstructorGruposPage from './instructor/groups/InstructorGruposPage';
+import InstructorAsesoriasPage from './instructor/advices/InstructorAsesoriasPage';
+import InstructorClasesPage from './instructor/online/InstructorClasesPage';
 
 export default function App() {
   return (
@@ -63,6 +68,11 @@ export default function App() {
         <Route path="/instructor" element={<InstructorLayout/>}>
             <Route index element={<Navigate to="/instructor/dashboard"/>}/>
             <Route path="dashboard" element={<InstructorDashboardPage/>}/>
+            <Route path="advice" element={<InstructorAsesoriasPage/>}/>
+            <Route path="calendar" element={<InstructorCalendarioPage/>}/>
+            <Route path="schedule" element={<InstructorHorariosPage/>}/>
+            <Route path="groups" element={<InstructorGruposPage/>}/>
+            <Route path="online" element={<InstructorClasesPage/>}/>
         </Route>
 
 

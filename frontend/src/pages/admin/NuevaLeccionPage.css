@@ -280,3 +280,58 @@
 .breadcrumb__link:hover { text-decoration: underline; }
 
 
+
+/* Upload blocks */
+.bloque-upload-zone {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px dashed #d1d5db;
+  border-radius: 8px;
+  padding: 14px 16px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: #6b7280;
+  transition: border-color 0.15s, color 0.15s;
+  margin-top: 6px;
+}
+.bloque-upload-zone:hover { border-color: #59CBA5; color: #1E7D62; }
+.bloque-upload-zone--loading { opacity: 0.6; cursor: wait; }
+
+.bloque-upload-ok {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.bloque-preview-img {
+  width: 72px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.bloque-archivo-nombre {
+  font-size: 0.82rem;
+  color: #374151;
+  font-weight: 500;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bloque-reemplazar {
+  font-size: 0.75rem;
+  color: #59CBA5;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  font-weight: 600;
+}
+.bloque-reemplazar:hover { text-decoration: underline; }

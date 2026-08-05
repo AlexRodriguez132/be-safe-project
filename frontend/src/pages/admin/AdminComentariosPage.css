@@ -1,0 +1,78 @@
+.ac-page { padding: 32px 40px 60px; }
+
+.ac-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+}
+.ac-header h1 { font-size: 1.5rem; font-weight: 800; color: #1a1a2e; margin: 0; }
+.ac-badge {
+  display: inline-block;
+  background: #fef3c7; color: #92400e;
+  font-size: 0.72rem; font-weight: 700;
+  padding: 3px 10px; border-radius: 20px;
+  margin-left: 4px;
+}
+
+.ac-filtros { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+.ac-filtro-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: 20px;
+  border: 2px solid #f0f0f0; background: #fff;
+  font-size: 0.82rem; font-weight: 600; color: #6b7280;
+  cursor: pointer; font-family: inherit;
+  transition: border-color 0.15s, color 0.15s;
+}
+.ac-filtro-btn:hover { border-color: #59CBA5; color: #1E7D62; }
+.ac-filtro-btn--active { border-color: #59CBA5; background: #EEFAF6; color: #1E7D62; }
+.ac-filtro-count {
+  background: #f3f4f6; color: #6b7280;
+  font-size: 0.7rem; font-weight: 700;
+  padding: 1px 6px; border-radius: 10px;
+}
+.ac-filtro-btn--active .ac-filtro-count { background: #d1fae5; color: #1E7D62; }
+
+.ac-loading { display: flex; align-items: center; gap: 10px; padding: 32px 0; color: #9ca3af; }
+.ac-spinner {
+  width: 18px; height: 18px;
+  border: 2px solid #e5e7eb; border-top-color: #59CBA5;
+  border-radius: 50%; animation: ac-spin 0.7s linear infinite;
+}
+@keyframes ac-spin { to { transform: rotate(360deg); } }
+.ac-empty { padding: 40px 0; color: #9ca3af; text-align: center; }
+
+.ac-tabla { display: flex; flex-direction: column; gap: 12px; }
+
+.ac-row {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+  padding: 18px 20px;
+  display: flex; align-items: flex-start; gap: 16px;
+  flex-wrap: wrap;
+}
+.ac-row__left { flex: 1; min-width: 200px; display: flex; flex-direction: column; gap: 6px; }
+.ac-row__meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+.ac-row__user { font-size: 0.82rem; font-weight: 700; color: #1a1a2e; }
+.ac-row__curso { font-size: 0.75rem; color: #9ca3af; }
+.ac-estado-chip {
+  font-size: 0.7rem; font-weight: 700;
+  padding: 3px 10px; border-radius: 20px;
+}
+.ac-row__texto { font-size: 0.875rem; color: #374151; margin: 0; line-height: 1.5; }
+.ac-row__fecha { font-size: 0.72rem; color: #9ca3af; }
+
+.ac-row__actions { display: flex; gap: 8px; flex-shrink: 0; align-items: center; flex-wrap: wrap; }
+.ac-action-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 7px 14px; border-radius: 8px; border: none;
+  font-size: 0.78rem; font-weight: 600;
+  cursor: pointer; font-family: inherit;
+  transition: opacity 0.15s;
+}
+.ac-action-btn--aprobar { background: #EEFAF6; color: #1E7D62; }
+.ac-action-btn--aprobar:hover { background: #d1fae5; }
+.ac-action-btn--rechazar { background: #fef2f2; color: #dc2626; }
+.ac-action-btn--rechazar:hover { background: #fee2e2; }
+.ac-action-btn--eliminar { background: #f9fafb; color: #6b7280; }
+.ac-action-btn--eliminar:hover { background: #f3f4f6; color: #374151; }

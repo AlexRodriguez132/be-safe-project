@@ -68,6 +68,33 @@
 
 .form-group input:focus { border-color: #59CBA5; }
 
+.input-suffix-wrap {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+.input-suffix-wrap:focus-within { border-color: #59CBA5; }
+.input-suffix-wrap input {
+  border: none !important;
+  border-radius: 0 !important;
+  flex: 1;
+  outline: none;
+}
+.input-suffix {
+  padding: 0 14px;
+  font-size: 0.85rem;
+  color: #6b7280;
+  background: #f9fafb;
+  border-left: 1.5px solid #d1d5db;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
 .input-icon-wrap {
   position: relative;
   display: flex;

@@ -17,6 +17,12 @@ export default function VistaPreviaCursoPage() {
   const navigate = useNavigate();
   const [curso, setCurso] = useState(null);
   const [moduloAbierto, setModuloAbierto] = useState(null);
+  const [toast, setToast] = useState(false);
+
+  const mostrarToast = () => {
+    setToast(true);
+    setTimeout(() => setToast(false), 3000);
+  };
 
   useEffect(() => {
     cursoService.obtenerPorId(id).then(c => {
@@ -32,12 +38,28 @@ export default function VistaPreviaCursoPage() {
 
   return (
     <div className="vista-previa">
-      <div className="breadcrumb">
-        <span className="breadcrumb__link" onClick={() => navigate('/admin/cursos')}>Cursos</span>
-        <span> &gt; </span>
-        <span className="breadcrumb__link" onClick={() => navigate(`/admin/cursos/${id}/detalle`)}>{curso.titulo}</span>
-        <span> &gt; </span>
-        <strong>Vista previa</strong>
+      {toast && (
+        <div className="vp-toast">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+          Guardado exitosamente
+        </div>
+      )}
+      <div className="vp-topbar">
+        <button className="vp-back-btn" onClick={() => navigate(`/admin/cursos/${id}/detalle`)}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6"/></svg>
+          Volver al editor
+        </button>
+        <div className="breadcrumb">
+          <span className="breadcrumb__link" onClick={() => navigate('/admin/cursos')}>Cursos</span>
+          <span> &gt; </span>
+          <span className="breadcrumb__link" onClick={() => navigate(`/admin/cursos/${id}/detalle`)}>{curso.titulo}</span>
+          <span> &gt; </span>
+          <strong>Vista previa</strong>
+        </div>
+        <button className="vp-save-btn" onClick={mostrarToast}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Guardar curso
+        </button>
       </div>
 
       <div className="vp-hero" style={{ borderLeft: `4px solid ${curso.color || '#59CBA5'}` }}>
@@ -157,11 +179,6 @@ export default function VistaPreviaCursoPage() {
         </div>
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <button className="btn-volver" onClick={() => navigate(`/admin/cursos/${id}/detalle`)}>
-          Volver al editor
-        </button>
-      </div>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import './NuevoCuestionarioPage.css';
 
 const TIPO_OPCIONES = [
   { value: 'UNA_OPCION', label: 'Una opción' },
-  { value: 'MAS_OPCIONES', label: 'Más opciones' },
+  { value: 'MAS_OPCIONES', label: 'Opción múltiple' },
 ];
 
 function preguntaVacia(id) {
@@ -14,8 +14,8 @@ function preguntaVacia(id) {
     titulo: '',
     tipo: 'UNA_OPCION',
     opciones: [
-      { _id: `${id}a`, texto: 'Opción 1', esCorrecta: false },
-      { _id: `${id}b`, texto: 'Opción 2', esCorrecta: false },
+      { _id: `${id}a`, texto: '', esCorrecta: false },
+      { _id: `${id}b`, texto: '', esCorrecta: false },
     ],
   };
 }
@@ -71,7 +71,7 @@ export default function NuevoCuestionarioPage() {
   const agregarOpcion = (idx) => {
     const ts = Date.now();
     setPreguntas(p => p.map((pr, i) => i === idx
-      ? { ...pr, opciones: [...pr.opciones, { _id: ts, texto: `Opción ${pr.opciones.length + 1}`, esCorrecta: false }] }
+      ? { ...pr, opciones: [...pr.opciones, { _id: ts, texto: '', esCorrecta: false }] }
       : pr));
   };
 
@@ -182,7 +182,7 @@ export default function NuevoCuestionarioPage() {
                       ))}
                     </select>
                   </div>
-                  <button type="button" className="icon-btn icon-btn--danger" style={{ marginTop: 22 }}
+                  <button type="button" className="icon-btn icon-btn--danger" style={{ alignSelf: 'flex-end', marginBottom: 2 }}
                     onClick={() => eliminarPregunta(pIdx)}>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
                   </button>
@@ -201,6 +201,7 @@ export default function NuevoCuestionarioPage() {
                         <div className={`tipo-indicator ${o.esCorrecta ? 'tipo-indicator--active' : ''}`}
                           style={{ borderRadius: p.tipo === 'UNA_OPCION' ? '50%' : '4px' }} />
                         <input className="opcion-input" value={o.texto}
+                          placeholder="Escribe tu respuesta"
                           onChange={e => actualizarOpcion(pIdx, oIdx, e.target.value)} />
                         <button type="button"
                           className={`btn-correcta ${o.esCorrecta ? 'btn-correcta--active' : ''}`}
@@ -212,7 +213,7 @@ export default function NuevoCuestionarioPage() {
                         </button>
                         {p.opciones.length > 2 && (
                           <button type="button" className="opcion-del" onClick={() => eliminarOpcion(pIdx, oIdx)}>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
                           </button>
                         )}
                       </div>

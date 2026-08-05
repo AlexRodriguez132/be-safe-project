@@ -111,9 +111,12 @@ export default function NuevoModuloPage() {
                 placeholder="Escribe el título de módulo" />
             </div>
             <div className="form-group">
-              <label>Duración</label>
-              <input value={duracion} onChange={e => setDuracion(e.target.value)}
-                placeholder="Ej: 3 semanas, 5 horas" />
+              <label>Duración (horas)</label>
+              <div className="input-suffix-wrap">
+                <input type="number" min="0" value={duracion} onChange={e => setDuracion(e.target.value)}
+                  placeholder="Ej: 5" />
+                <span className="input-suffix">horas</span>
+              </div>
             </div>
           </div>
           <button type="submit" className="btn-save" disabled={saving}>

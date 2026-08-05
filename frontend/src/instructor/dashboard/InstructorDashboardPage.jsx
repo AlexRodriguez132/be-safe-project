@@ -3,7 +3,7 @@ import './css/InstructorDashboardPage.css'
 export default function InstructorDashboardPage(){
     return(
         <div>
-            <div className="navbar-dashboard">
+            <div className="navbar-instructor"> 
                 <h3>Dashboard</h3>
                 <div className="btns-right">
                     <button className="btn-notifications">

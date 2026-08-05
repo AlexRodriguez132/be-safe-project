@@ -1,0 +1,216 @@
+.navbar-instructor {
+    display: flex;
+    padding: 16px 2% 16px 2%;
+    justify-content: space-between;
+}
+
+.btns-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-notifications {
+    background-color: transparent;
+    border-radius: 50px;
+    border: none;
+    height: 40px;
+    width: 40px;
+    padding-top: 5px;
+    padding-left: 5px;
+    transition: stroke 0.2s ease;
+}
+
+.btn-notifications:hover {
+    background: #f3f4f6;
+}
+
+.btn-notifications svg path {
+    transition: stroke 0.2s ease;
+}
+
+.btn-notifications:hover svg path {
+    stroke: #59C9A5;
+}
+
+.btn-profile {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    background-color: #59C9A5;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.btn-profile:hover {
+    background-color: #1E7D62;
+}
+
+.menu-advices-table{
+    display: flex;
+    margin-left: 2%;
+    margin-right: 2%;
+    padding: 0px 16px 0px 16px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-menu-advices{
+    height: 56px;
+    font-size: 16px;
+    background-color: #ffffff;
+    border: 3px solid white;
+    box-sizing: border-box;
+    color: #727272;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-menu-advices:focus{
+    border-bottom: 3px solid #59C9A5;
+    color: #59C9A5;
+}
+
+.div-search-advice{
+    border: 2px solid #C7C7C7;
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    padding: 4px;
+    padding-left: 8px;
+    gap: 10px;
+    border-radius: 10px;
+}
+
+.div-search-advice:focus-within{
+    border: 2px solid #59C9A5;
+}
+
+.input-search-advice{
+    font-family: Poppins, sans-serif;
+    width: 350px;
+    font-size: 16px;
+    border: none;
+}
+
+.input-search-advice:focus{
+    border: none;
+    outline: none;
+}
+
+.advices-table-container{
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 96%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-radius: 10px;
+    margin-top: 24px
+}
+
+.instructor-advices-table{
+    width: 100%;
+    min-width: 950px;
+    background-color: #59C9A5;
+    border-collapse: collapse;
+    overflow: hidden;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+
+
+.table-head-advices th{
+    border: 1px #C7C7C7 solid;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 500;
+    padding: 16px 12px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.table-head-advices th:last-child {
+    width: 160px;
+    text-align: center;
+}
+
+.table-body-advices td{
+    background-color: #ffffff;
+    border: 1px #C7C7C7 solid;
+    padding: 12px;
+    white-space: normal;
+    word-break: break-word;
+}   
+
+.action-advices-container{
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+}
+
+.btn-actions-advices{
+    height: 40px;
+    width: 40px;
+    background-color: #59C9A5;
+    border: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.btn-actions-advices:hover{
+    transition: all 0.2s ease;
+    background-color: #1E7D62;
+}
+
+.div-pagination{
+    margin: 24px 2%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.div-btns-pagination{
+    display: flex;
+    gap: 12px;
+}
+
+.btns-pagination{
+    font-size: 16px;
+    background-color: #ffffff;
+    height: 40px;
+    border: 1px #858585 solid;
+    border-radius: 10px;
+    padding: 0 16px;
+}
+
+.btns-pagination-numbers{
+    font-size: 16px;
+    background-color: #ffffff;
+    height: 40px;
+    width: 40px;
+    border: 1px #858585 solid;
+    border-radius: 10px;
+}
+
+.btns-pagination-numbers-focus {
+    font-size: 16px;
+    background-color: #59C9A5;
+    height: 40px;
+    width: 40px;
+    border: 1px #59C9A5 solid;
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.span-dots{
+    border: none;
+    background: none;
+    font-size: 16px;
+}

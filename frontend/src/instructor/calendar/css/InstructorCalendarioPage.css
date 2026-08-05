@@ -1,0 +1,70 @@
+/* Contenedor principal del calendario */
+.calendario-container {
+    margin: 16px 2% 16px 2%;
+    border-radius: 10px;
+}
+
+.calendario-container .fc-view-harness {
+    background-color: #ffffff;
+    border: 1px solid #C7C7C7;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+}
+
+
+.fc .fc-toolbar.fc-header-toolbar {
+    margin-bottom: 20px;
+}
+
+.fc .fc-toolbar-title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.fc .fc-button-primary {
+    background-color: transparent;
+    border: 2px solid #C7C7C7;
+    color: #727272;
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fc .fc-button-primary:hover {
+    background-color: #ffffff;
+    border-color: #59C9A5;
+    color: #59C9A5;
+    transition: all ease 0.2s;
+}
+
+
+.fc .fc-col-header-cell {
+    background-color: #59C9A5;
+    padding: 16px 0;
+    border: 1px solid #C7C7C7;
+}
+
+.fc .fc-col-header-cell-cushion {
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.fc .fc-daygrid-day {
+    border: 1px solid #C7C7C7;
+}
+
+/* Número del día */
+.fc .fc-daygrid-day-number {
+    padding: 8px;
+    font-weight: 500;
+}
+
+.calendario-container .fc-view-harness {
+    border: 1px solid #C7C7C7;
+    border-radius: 16px;
+}

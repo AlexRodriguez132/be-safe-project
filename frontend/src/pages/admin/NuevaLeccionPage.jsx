@@ -50,12 +50,49 @@ export default function NuevaLeccionPage() {
   }, []);
 
   const agregarBloque = (tipo) => {
-    setBloques(b => [...b, { idBloque: Date.now(), tipo, contenido: '', descripcion: '' }]);
+    setBloques(b => [...b, { idBloque: Date.now(), tipo, contenido: '', descripcion: '', uploading: false }]);
     setShowMenu(false);
   };
 
   const actualizarBloque = (idBloque, field, value) => {
     setBloques(b => b.map(bl => bl.idBloque === idBloque ? { ...bl, [field]: value } : bl));
+  };
+
+  const handleFileUpload = async (idBloque, file) => {
+    actualizarBloque(idBloque, 'uploading', true);
+    setError('');
+
+    // Intenta subir al backend; si falla, cae a base64 local
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      const res = await fetch('http://localhost:8080/api/uploads', {
+        method: 'POST',
+        body: formData,
+        signal: AbortSignal.timeout(5000),
+      });
+      if (!res.ok) throw new Error('server_error');
+      const data = await res.json();
+      actualizarBloque(idBloque, 'contenido', data.url);
+      actualizarBloque(idBloque, 'nombreArchivo', data.nombre);
+      actualizarBloque(idBloque, 'uploading', false);
+      return;
+    } catch {
+      // Backend no disponible — usar URL local
+    }
+
+    // Fallback: base64 para imágenes, nombre de archivo para documentos
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      actualizarBloque(idBloque, 'contenido', e.target.result);
+      actualizarBloque(idBloque, 'nombreArchivo', file.name);
+      actualizarBloque(idBloque, 'uploading', false);
+    };
+    reader.onerror = () => {
+      setError('No se pudo leer el archivo.');
+      actualizarBloque(idBloque, 'uploading', false);
+    };
+    reader.readAsDataURL(file);
   };
 
   const eliminarBloque = (idBloque) => {
@@ -162,16 +199,52 @@ export default function NuevaLeccionPage() {
             <div className="bloques-list">
               {bloques.map(b => {
                 const def = TIPOS_BLOQUE.find(t => t.tipo === b.tipo);
+                const esUpload = b.tipo === 'IMAGEN' || b.tipo === 'ARCHIVO';
                 return (
                   <div key={b.idBloque} className="bloque-item">
                     <span className="bloque-item__dot" style={{ background: def?.color || '#9ca3af' }} />
                     <div className="bloque-item__body">
                       <strong>{def?.label}</strong>
-                      <input
-                        placeholder={def?.tipo === 'VIDEO' ? 'URL del video' : def?.tipo === 'ENLACE' ? 'URL' : 'Nombre del archivo'}
-                        value={b.contenido}
-                        onChange={e => actualizarBloque(b.idBloque, 'contenido', e.target.value)}
-                      />
+                      {esUpload ? (
+                        b.contenido ? (
+                          <div className="bloque-upload-ok">
+                            {b.tipo === 'IMAGEN'
+                              ? <img src={b.contenido} alt="" className="bloque-preview-img" />
+                              : <span className="bloque-archivo-nombre">{b.nombreArchivo || b.contenido.split('/').pop()}</span>
+                            }
+                            <button type="button" className="bloque-reemplazar"
+                              onClick={() => { actualizarBloque(b.idBloque, 'contenido', ''); actualizarBloque(b.idBloque, 'nombreArchivo', ''); }}>
+                              Reemplazar
+                            </button>
+                          </div>
+                        ) : (
+                          <label className={`bloque-upload-zone${b.uploading ? ' bloque-upload-zone--loading' : ''}`}>
+                            {b.uploading ? (
+                              <span>Subiendo...</span>
+                            ) : (
+                              <>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
+                                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                  <polyline points="17 8 12 3 7 8"/>
+                                  <line x1="12" y1="3" x2="12" y2="15"/>
+                                </svg>
+                                <span>Haz clic para subir {b.tipo === 'IMAGEN' ? 'imagen' : 'archivo'}</span>
+                                <input type="file"
+                                  accept={b.tipo === 'IMAGEN' ? 'image/*' : '*'}
+                                  style={{ display: 'none' }}
+                                  onChange={e => e.target.files[0] && handleFileUpload(b.idBloque, e.target.files[0])}
+                                />
+                              </>
+                            )}
+                          </label>
+                        )
+                      ) : (
+                        <input
+                          placeholder={b.tipo === 'VIDEO' ? 'URL del video (YouTube, Vimeo...)' : 'URL del enlace'}
+                          value={b.contenido}
+                          onChange={e => actualizarBloque(b.idBloque, 'contenido', e.target.value)}
+                        />
+                      )}
                     </div>
                     <button type="button" className="icon-btn icon-btn--danger"
                       onClick={() => eliminarBloque(b.idBloque)}>

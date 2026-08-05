@@ -5,6 +5,22 @@ import './NuevoCursoPage.css';
 
 const COLORES = ['#59CBA5', '#fbbf24', '#93c5fd', '#f9a8d4'];
 
+const CATEGORIAS_DEFAULT = [
+  { idCategoria: 1, nombreCategoria: 'Psicología' },
+  { idCategoria: 2, nombreCategoria: 'Finanzas' },
+  { idCategoria: 3, nombreCategoria: 'Jurídico' },
+  { idCategoria: 4, nombreCategoria: 'Defensa personal' },
+];
+
+const PORTADAS_ESTATICAS = [
+  '/covers/cover-1.svg',
+  '/covers/cover-2.svg',
+  '/covers/cover-3.svg',
+  '/covers/cover-4.svg',
+  '/covers/cover-5.svg',
+  '/covers/cover-6.svg',
+];
+
 const EMPTY_FORM = {
   titulo: '',
   descripcion: '',
@@ -27,7 +43,9 @@ export default function NuevoCursoPage() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    categoriaService.listarTodas().then(setCategorias);
+    categoriaService.listarTodas()
+      .then(data => setCategorias(data.length > 0 ? data : CATEGORIAS_DEFAULT))
+      .catch(() => setCategorias(CATEGORIAS_DEFAULT));
     if (esEdicion) {
       cursoService.obtenerPorId(id).then(c => {
         setForm({
@@ -147,13 +165,24 @@ export default function NuevoCursoPage() {
             </div>
           </div>
 
-          <div className="form-row">
+          <div className="form-row form-row--top">
             <div className="form-group">
               <label>Portada del curso</label>
-              <div className="upload-zone">
-                <p className="upload-label">Haz clic para cargar</p>
-                <p className="upload-hint">Formatos permitidos: png, jpg, jpeg, gif</p>
+              <div className="portada-picker">
+                {PORTADAS_ESTATICAS.map(src => (
+                  <button
+                    key={src}
+                    type="button"
+                    className={`portada-option${form.portada === src ? ' portada-option--active' : ''}`}
+                    onClick={() => setForm(f => ({ ...f, portada: src }))}
+                  >
+                    <img src={src} alt="" />
+                  </button>
+                ))}
               </div>
+              {form.portada && (
+                <p className="portada-selected">Portada seleccionada</p>
+              )}
             </div>
 
             <div className="form-group">

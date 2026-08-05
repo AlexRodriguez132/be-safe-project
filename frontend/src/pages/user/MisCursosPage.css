@@ -134,6 +134,22 @@
 
 .mcp-instructor svg { width: 16px; height: 16px; }
 
+.mcp-btn-continuar {
+  margin-top: 12px;
+  width: 100%;
+  padding: 10px;
+  background: #59CBA5;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.mcp-btn-continuar:hover { background: #1E7D62; }
+
 .mcp-empty {
   color: #9ca3af;
   font-size: 0.875rem;
